@@ -1,0 +1,16 @@
+Análisis datos Steel Industry Energy Consumption
+#
+| Variable                               | Descripción                                            | ¿Se usa en el modelo?                                   |
+|----------------------------------------|--------------------------------------------------------|---------------------------------------------------------|
+| date                                   | Fecha y hora del registro                              | Sí, pero hay que adaptar(hora, día, semana)             |
+| Usage_kWh                              | Consumo energético (variable objetivo)                 | Sí (variable a predecir)                                |
+| Lagging_Current_Reactive.Power_kVarh   | Potencia reactiva inductiva                            | Sí, podría afectar el consumo                           |
+| Leading_Current_Reactive_Power_kVarh   | Potencia reactiva capacitiva                           | Sí, similar a la anterior                               |
+| CO2(tCO2)                              | Emisiones de CO2                                       | No, no está relacionado con el consumo eléctrico        |
+| Lagging_Current_Power_Factor           | Factor de potencia inductivo                           | Sí, podría influir                                      |
+| Leading_Current_Power_Factor           | Factor de potencia capacitivo                          | Sí, podría influir                                      |
+| NSM                                    | Número de segundos desde medianoche                    | Sí, aunque poco importante por la hora                  |
+| WeekStatus                             | Si es día de semana o fin de semana                    | Sí, influye                                             |
+| Day_of_week                            | Día de la semana                                       | Sí, categórica                                          |
+| Load_Type                              | Tipo de carga (Light_Load, Medium_Load, High_Load)     | Sí, categórica                                          |
+|----------------------------------------|--------------------------------------------------------|---------------------------------------------------------|
