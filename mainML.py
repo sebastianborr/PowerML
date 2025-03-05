@@ -43,10 +43,10 @@ def main(saveModel, saveResults, pretrainedModel, pretrainedName):
 
     # Cargar el modelo sin entrenar
     #untrainedModel = SVR(kernel='rbf', C=1.0, epsilon=0.1)
-    #untrainedModel = LinearRegression()
+    untrainedModel = LinearRegression()
     #untrainedModel = RandomForestRegressor(n_estimators=100, random_state=42)
     #untrainedModel = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)
-    untrainedModel = XGBRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)
+    #untrainedModel = XGBRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)
 
     modelName = untrainedModel.__class__.__name__
 
@@ -80,7 +80,7 @@ def evaluate_model(model, X_train, X_test, y_train, y_test,modelName=""):
     mse = mean_squared_error(y_test, y_test_pred)
     r2 = r2_score(y_test, y_test_pred)
 #    accu = accuracy_score(y_test, y_test_pred)
-    if 0:
+    if  1:
         print(f'MAE: {mae:.2f}')
         print(f'MSE: {mse:.2f}')
         print(f'R²: {r2:.2f}')
@@ -107,7 +107,7 @@ def save_results(mae,mse, r2, training_time, modelName, model):
         'TrainTime': training_time
     }
     results_df = pd.DataFrame([results_dict])
-    results_df.to_csv(f'./output/{modelName}_results.csv', index=False)
+    results_df.to_csv(f'./output/ResultsML/{modelName}_results.csv', index=False)
 
 
 if __name__ == '__main__':
@@ -118,4 +118,4 @@ if __name__ == '__main__':
    pretrainedModel(boolean): Cargar un modelo preentrenado
    nameModel(string): Nombre del modelo a cargar
     '''
-    main(saveModel=True, saveResults=True, pretrainedModel=False, pretrainedName="SVR")
+    main(saveModel=False, saveResults=False, pretrainedModel=False, pretrainedName="SVR")
