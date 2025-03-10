@@ -1,11 +1,14 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib
+
+matplotlib.use('Agg')  # Cambia el backend para evitar errores
 import plotly.express as px
 import seaborn as sns # Importar seaborn para gráficos más atractivos
 
 # Cargo los datos desde el archivo CSV
-data = pd.read_csv('data\00_Steel_industry_data.csv')
+data = pd.read_csv('/mnt/c/Users/Sebas/Desktop/PowerML/data/00_Steel_industry_data.csv')
 
 # Primeras filas de los datos
 #  date  Usage_kWh  Lagging_Current_Reactive.Power_kVarh  Leading_Current_Reactive_Power_kVarh  CO2(tCO2)  Lagging_Current_Power_Factor  Leading_Current_Power_Factor   NSM WeekStatus Day_of_week   Load_Type
@@ -61,6 +64,7 @@ plt.xticks(ticks=range(len(meses)), labels =meses, rotation=0)
 
 # Ajustar el diseño y mostrar
 plt.tight_layout()
+plt.show(block=True)
 plt.show()
   
 
@@ -120,4 +124,5 @@ plt.xlabel('Semana-Día')
 plt.ylabel('Hora y Minuto del Día')
 plt.gca().invert_yaxis()
 plt.tight_layout()
-plt.show()
+plt.show(block=True)
+plt.savefig("output_plot.png") 
