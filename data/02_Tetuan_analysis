@@ -1,0 +1,33 @@
+Análisis de Datos - Consumo Eléctrico
+#
+| Variable                           | Descripción                                         | ¿Se usa en el modelo? |
+|------------------------------------|----------------------------------------------------|-----------------------|
+| DateTime                           | Fecha y hora del registro                         | Sí, pero se descompone en varias características |
+| Temperature                        | Temperatura en grados Celsius                     | Sí, influye en la demanda eléctrica |
+| Humidity                           | Humedad relativa en %                             | Sí, puede afectar el consumo energético |
+| Wind Speed                         | Velocidad del viento en m/s                      | Sí, posible relación con el consumo y generación |
+| general diffuse flows              | Radiación difusa total (W/m²)                    | Sí, puede influir en la generación de energía solar |
+| diffuse flows                      | Radiación difusa parcial (W/m²)                  | Sí, relacionado con la radiación solar |
+| Zone 1 Power Consumption           | Consumo eléctrico en la zona 1                   | Sí, variable objetivo |
+| Zone 2 Power Consumption           | Consumo eléctrico en la zona 2                   | Sí, variable objetivo |
+| Zone 3 Power Consumption           | Consumo eléctrico en la zona 3                   | Sí, variable objetivo |
+
+#
+Variables después del preprocesamiento
+#
+| Variable                | Descripción                                               | ¿Se usa en el modelo? |
+|-------------------------|----------------------------------------------------------|-----------------------|
+| Hour                    | Hora del día (0-23)                                      | Sí, afecta el consumo |
+| Minute                  | Minuto de la hora (0-59)                                 | Sí, aunque con menor impacto |
+| Week                    | Semana del año                                          | Sí, puede reflejar tendencias estacionales |
+| Day                     | Día del mes                                             | Sí, puede influir en el patrón de consumo |
+| Day_of_Week_Num         | Día de la semana (0=Lunes, 6=Domingo)                   | Sí, afecta los hábitos de consumo |
+| WeekStatus              | Si es día laborable (Weekday) o fin de semana (Weekend) | Sí, influye en los patrones de consumo |
+| Temperature             | Temperatura normalizada                                 | Sí, afecta la demanda eléctrica |
+| Humidity                | Humedad relativa normalizada                            | Sí, afecta el confort y uso de energía |
+| Wind Speed              | Velocidad del viento normalizada                        | Sí, puede influir en la generación eólica |
+| general diffuse flows   | Radiación difusa total normalizada                     | Sí, impacta la generación de energía solar |
+| diffuse flows           | Radiación difusa parcial normalizada                   | Sí, impacta la generación de energía solar |
+| Zone 1 Power Consumption | Consumo eléctrico en zona 1 (escalado)                 | Sí, variable objetivo |
+| Zone 2 Power Consumption | Consumo eléctrico en zona 2 (escalado)                 | Sí, variable objetivo |
+| Zone 3 Power Consumption | Consumo eléctrico en zona 3 (escalado)                 | Sí, variable objetivo |

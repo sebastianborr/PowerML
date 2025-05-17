@@ -59,7 +59,7 @@ def fetch_and_store_data(start_date, end_date, uid, time_interval, filename="out
         # Si los datos existen, añadirlos a la lista
         if data:
             for entry in data:
-                # Obtener el día de la semana en inglés
+                # Obtener el día de la semana en inglés (adecuandome a otros datasets)
                 date_object = datetime.strptime(entry[0], "%Y-%m-%dT%H:%M:%SZ")
                 weekday = date_object.strftime("%A")  # Día de la semana en inglés
                 
