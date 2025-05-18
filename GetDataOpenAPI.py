@@ -81,7 +81,7 @@ def fetch_and_store_data(start_date, end_date, uid, time_interval, filename="out
 # Parámetros de fecha, UID y tipo de intervalo
 start_date = "2022-03-01T00:00:00Z"
 end_date = "2025-03-01T23:59:00Z"
-uid = "MLU00390001"
+uid = "MLU00390001" #Creo que era politecnica4
 time_interval = "15m"  # "15m", "1h", "1d", "1M"
 fname ="/mnt/c/Users/Sebas/Desktop/PowerML/output/Politecnica.csv"
 
