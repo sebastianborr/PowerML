@@ -15,7 +15,7 @@ df = pd.read_csv('data/02_Tetuan_City_power_consumption.csv')
 X_exog, y, scaler_X, scaler_y = preprocess_data_electricity(df)
 
 # Función para crear secuencias
-def create_sequences(data, seq_length):
+def create_sequences_old(data, seq_length):
     sequences = []
     labels = []
     for i in range(len(data) - seq_length):
@@ -23,6 +23,17 @@ def create_sequences(data, seq_length):
         labels.append(data[i + seq_length, 0])
     return np.array(sequences), np.array(labels)
 
+def create_sequences(data, seq_length):
+    sequences = []
+    labels = []
+    for i in range(len(data) - seq_length):
+        #sequences.append(data[i:i + seq_length])
+        seq = np.concatenate([data[i:i + seq_length, 0:1], data[i:i + seq_length, 3:]], axis=1).copy()
+        seq[-1, 0] = 0  # <--- Pone a cero la variable objetivo en el último paso
+        sequences.append(seq)
+        # Suponemos que el valor a predecir es el primer valor de la siguiente fila (Usage_kWh normalizado)
+        labels.append(data[i + seq_length, 0])
+    return np.array(sequences), np.array(labels)
 # Parámetros
 numHoras = 8
 SEQ_LENGTH = 6 * numHoras  # 8 horas de datos (48 pasos de 10 minutos)
@@ -93,6 +104,6 @@ for config in [1, 2, 3, 4]:  # Las 4 configuraciones definidas
                 })
                 # Guardar resultados en CSV
                 results_df = pd.DataFrame(results)
-                results_df.to_csv('./output/ResultsDL/01_CNNLSTM_ablation_results.csv', index=False)
+                results_df.to_csv('./output/ResultsDL/01_CNNLSTM_ablation_results_new.csv', index=False)
 
 print("Resultados guardados en 'CNNLSTM_ablation_results.csv'")

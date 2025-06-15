@@ -14,13 +14,25 @@ df = pd.read_csv('data/02_Tetuan_City_power_consumption.csv')
 X_exog, y, scaler_X, scaler_y = preprocess_data_electricity(df)
 
 # Crear secuencias
-def create_sequences(data, seq_length):
+def create_sequences_old(data, seq_length):
     X, y = [], []
     for i in range(len(data) - seq_length):
         seq = np.concatenate([data[i:i+seq_length, 0:1], data[i:i+seq_length, 3:]], axis=1)
         X.append(seq)
         y.append(data[i+seq_length, 0])
     return np.array(X), np.array(y)
+
+def create_sequences(data, seq_length):
+    sequences = []
+    labels = []
+    for i in range(len(data) - seq_length):
+        #sequences.append(data[i:i + seq_length])
+        seq = np.concatenate([data[i:i + seq_length, 0:1], data[i:i + seq_length, 3:]], axis=1).copy()
+        seq[-1, 0] = 0  # <--- Pone a cero la variable objetivo en el último paso
+        sequences.append(seq)
+        # Suponemos que el valor a predecir es el primer valor de la siguiente fila (Usage_kWh normalizado)
+        labels.append(data[i + seq_length, 0])
+    return np.array(sequences), np.array(labels)
 
 SEQ_LENGTH = 48
 X_seq, y_seq = create_sequences(X_exog, SEQ_LENGTH)
@@ -84,8 +96,8 @@ num_heads_list = [2, 4]
 ff_dims = [64, 128]
 num_layers_list = [1, 2]
 dropout_rates = [0, 0.2]
-batch_sizes = [32, 64,128]
-epochs_t = [10,20,50]
+batch_sizes = [64,128]
+epochs_t = [20,50]
 results = []
 # os.makedirs('./output/ResultsDL', exist_ok=True)
 ii = 0
@@ -98,8 +110,8 @@ for arch in architectures:
                         for epochs in epochs_t:
                             for batch_size in batch_sizes:
                                 ii += 1 
-                                if ii<543:
-                                    continue
+                                #if ii<543:
+                                #    continue
                                 print(f"Estudio de ablación {ii} /576")
                                 if arch == 'encoder':
                                     model = build_encoder_model(SEQ_LENGTH, X_seq.shape[2], d_model, num_heads, ff_dim, num_layers, dropout_rate)
@@ -108,7 +120,7 @@ for arch in architectures:
                                 model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001), loss='mse')
 
                                 start_time = time()
-                                model.fit(X_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(X_test, y_test), verbose=0)
+                                history = model.fit(X_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(X_test, y_test), verbose=0)
                                 training_time = time() - start_time
 
                                 predictions = model.predict(X_test)
@@ -122,7 +134,16 @@ for arch in architectures:
                                 mae = np.mean(np.abs(y_test_real - predictions_real))
                                 mre = np.mean(np.abs((y_test_real - predictions_real) / y_test_real)) * 100
                                 cvrmse = np.std((y_test_real - predictions_real) / y_test_real) * 100
+                                train_loss_final = history.history['loss'][-1]
+                                val_loss_final = history.history['val_loss'][-1]
+                                overfit_gap = val_loss_final - train_loss_final
+                                loss_ratio = val_loss_final / train_loss_final if train_loss_final != 0 else np.nan
 
+                                # Imprimir si hay indicios de overfitting
+                                if loss_ratio > 1.2:  # por ejemplo, si la loss de validación es 20% mayor que la de entrenamiento
+                                    print(f"Posible overfitting: Loss Ratio = {loss_ratio:.2f} (Gap = {overfit_gap:.2f})")
+                                else:
+                                    print(f"No hay overfitting. Loss Ratio = {loss_ratio:.2f} (Gap = {overfit_gap:.2f})")
                                 results.append({
                                     'architecture': arch,
                                     'd_model': d_model,
@@ -140,8 +161,12 @@ for arch in architectures:
                                     #'loss': loss,
                                     'RMSE': rmse,
                                     'CVRMSE': cvrmse,
-                                    'Training Time (s)': training_time
+                                    'Training Time (s)': training_time,
+                                    'Train Loss Final': train_loss_final,
+                                    'Validation Loss Final': val_loss_final,
+                                    'Overfit Gap': overfit_gap,
+                                    'Loss Ratio': loss_ratio,
                                 })
-                                pd.DataFrame(results).to_csv('./output/ResultsDL/transformer_ablation_results_2.csv', index=False)
+                                pd.DataFrame(results).to_csv('./output/ResultsDL/01_transformer_ablation_results_new.csv', index=False)
 
 print("Estudio de ablación de Transformers completado.")

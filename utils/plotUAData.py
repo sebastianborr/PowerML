@@ -6,7 +6,7 @@ import seaborn as sns
 from datetime import datetime
 
 # Cargar los datos
-data = pd.read_csv("/mnt/c/Users/Sebas/Desktop/PowerML/Politecnica4.csv")
+data = pd.read_csv("/mnt/c/Users/Sebas/Desktop/PowerML/data/03_Politecnica4.csv")
 
 # Convertir la columna de fechas a formato datetime
 data['time'] = pd.to_datetime(data['time'])

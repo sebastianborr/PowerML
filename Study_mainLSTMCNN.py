@@ -29,11 +29,23 @@ df = pd.read_csv('data/02_Tetuan_City_power_consumption.csv')
 X_exog, y, scaler_X, scaler_y = preprocess_data_electricity(df)
 
 # Función para crear secuencias de datos
-def create_sequences(data, seq_length):
+def create_sequences_old(data, seq_length):
     sequences = []
     labels = []
     for i in range(len(data) - seq_length):
         sequences.append(np.concatenate([data[i:i + seq_length, 0:1], data[i:i + seq_length, 3:]], axis=1))
+        # Suponemos que el valor a predecir es el primer valor de la siguiente fila (Usage_kWh normalizado)
+        labels.append(data[i + seq_length, 0])
+    return np.array(sequences), np.array(labels)
+
+def create_sequences(data, seq_length):
+    sequences = []
+    labels = []
+    for i in range(len(data) - seq_length):
+        #sequences.append(data[i:i + seq_length])
+        seq = np.concatenate([data[i:i + seq_length, 0:1], data[i:i + seq_length, 3:]], axis=1).copy()
+        seq[-1, 0] = 0  # <--- Pone a cero la variable objetivo en el último paso
+        sequences.append(seq)
         # Suponemos que el valor a predecir es el primer valor de la siguiente fila (Usage_kWh normalizado)
         labels.append(data[i + seq_length, 0])
     return np.array(sequences), np.array(labels)
@@ -46,18 +58,17 @@ X_seq, y_seq = create_sequences(X_exog, SEQ_LENGTH)
 X_train, X_test, y_train, y_test = train_test_split(X_seq, y_seq, test_size=0.2, random_state=42)
 
 epochs_values = [10,20,50]
-epochs_values = [50]
-batch_size_values = [64]
-
+batch_size_values = [16,32,64]
+config = [1, 2, 3, 4, 5]
 # Lista para guardar los resultados
 results = []
-
+dropout_values = [True, False]  # Añadir Dropout o no
 #- Vamos al lio
 num_features = X_exog.shape[1]-2
 
 # Bucle principal para iterar sobre las configuraciones del modelo
-for config in [4]:  # Las 5 configuraciones definidas
-    for dropout in [ False]:  # Con y sin Dropout
+for config in config:  # Las 5 configuraciones definidas
+    for dropout in dropout_values:  # Con y sin Dropout
         model = seleccionModelosHibridos(
             flagModelo=config,
             num_features=num_features,
@@ -99,6 +110,19 @@ for config in [4]:  # Las 5 configuraciones definidas
                 mae = np.mean(np.abs(y_test_real - predictions_real))
                 mre = np.mean(np.abs((y_test_real - predictions_real) / y_test_real)) * 100
                 cvrmse = np.std((y_test_real - predictions_real) / y_test_real) * 100
+
+
+                train_loss_final = history.history['loss'][-1]
+                val_loss_final = history.history['val_loss'][-1]
+                overfit_gap = val_loss_final - train_loss_final
+                loss_ratio = val_loss_final / train_loss_final if train_loss_final != 0 else np.nan
+
+                # Imprimir si hay indicios de overfitting
+                if loss_ratio > 1.2:  # por ejemplo, si la loss de validación es 20% mayor que la de entrenamiento
+                    print(f"Posible overfitting: Loss Ratio = {loss_ratio:.2f} (Gap = {overfit_gap:.2f})")
+                else:
+                    print(f"No hay overfitting. Loss Ratio = {loss_ratio:.2f} (Gap = {overfit_gap:.2f})")
+                
                 # Guardar los resultados junto con la configuración y el tiempo de entrenamiento
                 results.append({
                     'num_layers': config,
@@ -113,14 +137,18 @@ for config in [4]:  # Las 5 configuraciones definidas
                     #'loss': loss,
                     'RMSE': rmse,
                     'CVRMSE': cvrmse,
-                    'Training Time (s)': training_time
+                    'Training Time (s)': training_time,
+                    'Train Loss Final': train_loss_final,
+                    'Validation Loss Final': val_loss_final,
+                    'Overfit Gap': overfit_gap,
+                    'Loss Ratio': loss_ratio,
                 })
 
                 # Convertir los resultados en un DataFrame para analizarlos fácilmente
                 results_df = pd.DataFrame(results)
 
                 # Guardar los resultados en un archivo CSV
-                results_df.to_csv('./output/ResultsDL/01_LSTMCNN_ablation_result_4.csv', index=False)
+                results_df.to_csv('./output/ResultsDL/01_LSTMCNN_ablation_result_new.csv', index=False)
 
 print("Resultados guardados en 'Tetuan_model_ablation_results_with_time.csv'")
 
