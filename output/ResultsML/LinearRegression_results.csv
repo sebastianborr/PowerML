@@ -1,2 +1,0 @@
-ModelName,Kernel,Params,MAE,MSE,R2,TrainTime
-LinearRegression,N/A,"{'copy_X': True, 'fit_intercept': True, 'n_jobs': None, 'positive': False}",7.088129521017348,94.40981743454567,0.9169455773894968,0.06491732597351074

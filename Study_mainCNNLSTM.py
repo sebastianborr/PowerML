@@ -50,11 +50,14 @@ dropout_values = [True, False]
 # Bucle principal para iterar sobre las configuraciones
 results = []
 num_features = X_exog.shape[1]-2
-
+flag = 0
 for config in [1, 2, 3, 4]:  # Las 4 configuraciones definidas
     for dropout in dropout_values:
         for epochs in epochs_values:
             for batch_size in batch_size_values:
+                flag +=1
+                if flag < 51:
+                    continue
                 model = seleccionModelosCNN_LSTM(
                     flagModelo=config,
                     num_features=num_features,
@@ -87,23 +90,31 @@ for config in [1, 2, 3, 4]:  # Las 4 configuraciones definidas
                 mre = np.mean(np.abs((y_test_real - predictions_real) / y_test_real)) * 100
                 cvrmse = np.std((y_test_real - predictions_real) / y_test_real) * 100
                 # Guardar los resultados junto con la configuración y el tiempo de entrenamiento
+
+                train_loss_final = history.history['loss'][-1]
+                val_loss_final = history.history['val_loss'][-1]
+                overfit_gap = val_loss_final - train_loss_final
+                loss_ratio = val_loss_final / train_loss_final if train_loss_final != 0 else np.na
+                
                 results.append({
                     'num_layers': config,
                     'dropout': dropout,
                     'epochs': epochs,
                     'batch_size': batch_size,
                     'MSE': mse,
-                    'R2': r2,
+                    'RMSE': rmse,
                     'MAE': mae,
                     'MAPE': mape,
-                    'MRE': mre,
-                    #'loss': loss,
-                    'RMSE': rmse,
+                    'R2': r2,
                     'CVRMSE': cvrmse,
-                    'Training Time (s)': training_time
+                    'Training Time (s)': training_time,
+                    'Train_Loss_Final': train_loss_final,
+                    'Val_Loss_Final': val_loss_final,
+                    'Overfit_Gap': overfit_gap,
+                    'Loss_Ratio': loss_ratio
                 })
                 # Guardar resultados en CSV
                 results_df = pd.DataFrame(results)
-                results_df.to_csv('./output/ResultsDL/01_CNNLSTM_ablation_results_new.csv', index=False)
+                results_df.to_csv('./output/ResultsDL/01_CNNLSTM_ablation_results_new_lost_3.csv', index=False)
 
 print("Resultados guardados en 'CNNLSTM_ablation_results.csv'")

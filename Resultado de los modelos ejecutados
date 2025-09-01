@@ -1,0 +1,62 @@
+Resultado de los modelos ejecutados
+
+Modelo LSTM_89_1:
+   RMSE Directo = 346.61, MAE Directo = 232.34
+   RMSE Autoregresivo = 6277.25, MAE Autoregresivo = 3154.27
+-------------------------------
+
+Modelo LSTM_89_2:
+   RMSE Directo = 345.80, MAE Directo = 233.64
+   RMSE Autoregresivo = 6285.35, MAE Autoregresivo = 3199.07
+-------------------------------
+
+Modelo LSTM_89_3:
+   RMSE Directo = 342.92, MAE Directo = 232.23
+   RMSE Autoregresivo = 4124.99, MAE Autoregresivo = 3236.93
+-------------------------------
+
+Modelo LSTM_89_4:
+   RMSE Directo = 352.29, MAE Directo = 236.24
+   RMSE Autoregresivo = 4211.48, MAE Autoregresivo = 3389.72
+-------------------------------
+
+Modelo LSTM_18_1:
+   RMSE Directo = 381.71, MAE Directo = 278.19
+   RMSE Autoregresivo = 6497.65, MAE Autoregresivo = 5028.05
+-------------------------------
+
+Modelo LSTM_18_2:
+   RMSE Directo = 382.20, MAE Directo = 280.13
+   RMSE Autoregresivo = 6475.04, MAE Autoregresivo = 5025.32
+-------------------------------
+
+Modelo LSTM_18_3:
+   RMSE Directo = 355.34, MAE Directo = 247.20
+   RMSE Autoregresivo = 3839.03, MAE Autoregresivo = 2627.96
+-------------------------------
+
+Modelo LSTM_18_4:
+   RMSE Directo = 365.51, MAE Directo = 252.72
+   RMSE Autoregresivo = 3794.99, MAE Autoregresivo = 2608.53
+-------------------------------
+
+Modelo LSTMCNN_43_1:
+   RMSE Directo = 411.73, MAE Directo = 294.78
+   RMSE Autoregresivo = 3799.94, MAE Autoregresivo = 2787.00
+-------------------------------
+
+Modelo LSTMCNN_43_2:
+   RMSE Directo = 406.48, MAE Directo = 292.76
+   RMSE Autoregresivo = 3933.75, MAE Autoregresivo = 2885.86
+-------------------------------
+
+Modelo LSTMCNN_43_3:
+   RMSE Directo = 470.69, MAE Directo = 360.69
+   RMSE Autoregresivo = 5733.25, MAE Autoregresivo = 4866.71
+-------------------------------
+
+Modelo LSTMCNN_43_4:
+   RMSE Directo = 483.20, MAE Directo = 369.42
+   RMSE Autoregresivo = 5750.35, MAE Autoregresivo = 4899.96
+-------------------------------
+

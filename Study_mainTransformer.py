@@ -110,8 +110,8 @@ for arch in architectures:
                         for epochs in epochs_t:
                             for batch_size in batch_sizes:
                                 ii += 1 
-                                #if ii<543:
-                                #    continue
+                                if ii<186:
+                                    continue
                                 print(f"Estudio de ablación {ii} /576")
                                 if arch == 'encoder':
                                     model = build_encoder_model(SEQ_LENGTH, X_seq.shape[2], d_model, num_heads, ff_dim, num_layers, dropout_rate)
@@ -167,6 +167,6 @@ for arch in architectures:
                                     'Overfit Gap': overfit_gap,
                                     'Loss Ratio': loss_ratio,
                                 })
-                                pd.DataFrame(results).to_csv('./output/ResultsDL/01_transformer_ablation_results_new.csv', index=False)
+                                pd.DataFrame(results).to_csv('./output/ResultsDL/01_Transformer_ablation_results_new_alone.csv', index=False)
 
 print("Estudio de ablación de Transformers completado.")

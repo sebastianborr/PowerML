@@ -97,9 +97,9 @@ for units_lstm1, units_lstm2 in units_lstm_values:
         for epochs in epochs_values:
             for batch_size in batch_sizes:
                 for use_feature_att, use_temporal_att in attention_options:
-                    ii += 1
-                    if ii < 119:  # Continuar si el índice es menor a 76
-                        continue
+                    #ii += 1
+                    #if ii < 119:  # Continuar si el índice es menor a 76
+                    #    continue
                     model = build_bilstm_model(
                         SEQ_LENGTH, num_features,
                         units_lstm1, units_lstm2,

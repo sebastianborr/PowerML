@@ -1,2 +1,0 @@
-ModelName,Kernel,Params,MAE,MSE,R2,TrainTime
-RandomForestRegressor,N/A,"{'bootstrap': True, 'ccp_alpha': 0.0, 'criterion': 'squared_error', 'max_depth': None, 'max_features': 1.0, 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'monotonic_cst': None, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 42, 'verbose': 0, 'warm_start': False}",0.27837935216894955,0.6288873444991439,0.9994467537730317,7.924823522567749
