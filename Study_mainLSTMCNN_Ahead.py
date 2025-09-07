@@ -19,10 +19,10 @@ from scripts.generacionModelosLSTMCNN import seleccionModelosHibridos # Importar
 SEQ_LENGTH = 48  # Ventana de entrada (8h)
 PREDICTION_HORIZONS = [1, 6, 12, 24, 48]  # pasos a predecir (10 min, 1h, 2h, 4h, 8h)
 EPOCHS = 50
-BATCH_SIZE = 64
-DROPOUT = False
-CONFIGURACIONMODELO = 2 # Selección del modelo LSTM-CNN (1 a 5)
-NUM_CONFIGURACION_ESTUDIO = 35  # Para guardar el modelo con un nombre identificativo
+BATCH_SIZE = 32
+DROPOUT = True
+CONFIGURACIONMODELO = 3 # Selección del modelo LSTM-CNN (1 a 5)
+NUM_CONFIGURACION_ESTUDIO = 44  # Para guardar el modelo con un nombre identificativo
 # ------------------ CARGA Y PREPROCESADO ------------------
 df = pd.read_csv('data/02_Tetuan_City_power_consumption.csv')
 X_exog, y, scaler_X, scaler_y = preprocess_data_electricity(df)
@@ -117,7 +117,7 @@ for pred_len in PREDICTION_HORIZONS:
         'Overfit Gap': overfit_gap,
         'Loss Ratio': loss_ratio
     })
-    model.save(f"models/CNNLSTM_{NUM_CONFIGURACION_ESTUDIO}_{pred_len}.h5")
+    model.save(f"models/LSTMCNN_{NUM_CONFIGURACION_ESTUDIO}_{pred_len}.h5")
 
     # Guardar resultados
     results_df = pd.DataFrame(results)

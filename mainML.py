@@ -1,121 +1,140 @@
-import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC
-import matplotlib.pyplot as plt
-import os
-
-# Modelos
+import pandas as pd
+from sklearn.model_selection import ParameterGrid
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.linear_model import Ridge, Lasso, LinearRegression
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.svm import SVR
-from sklearn.linear_model import LinearRegression
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.ensemble import GradientBoostingRegressor
 from xgboost import XGBRegressor
-
-# Preprocesado y métricas
-from sklearn.preprocessing import StandardScaler, LabelEncoder
-from sklearn.metrics import accuracy_score, mean_absolute_error, mean_squared_error, r2_score
 import time
 
-# Guardar y cargar modelos
-import joblib
+# Cargar datos ya preprocesados
+from scripts.preprocess_data_Tetuan import preprocess_data_electricity
 
-# Cargar otros scripts
-from scripts.preprocess_data_steel import preprocess_data_steel
-from scripts.printGrafics import plot_results
+# ===============================
+# Cargar y preparar los datos
+df = pd.read_csv('data/02_Tetuan_City_power_consumption.csv')
+X_exog, y, scaler_X, scaler_y = preprocess_data_electricity(df)
+X_clean = np.concatenate([X_exog[:, 0:1], X_exog[:, 3:]], axis=1)
+# ===============================
+# Función para generar secuencias con y enmascarado
+def create_ML_sequences_with_masked_target(data, target_index, seq_length):
+    X, y = [], []
+    for i in range(seq_length, len(data) - 1):
+        window = data[i - seq_length:i + 1].copy()  # ventana + paso actual
+        window[-1, target_index] = 0  # enmascarar y(t)
+        X.append(window.flatten())
+        y.append(data[i, target_index])  # target real y(t)
+    return np.array(X), np.array(y)
 
-def main(saveModel, saveResults, pretrainedModel, pretrainedName):
-    # Carga de datos
-    df = pd.read_csv('data/00_Steel_industry_data.csv')
+# ===============================
 
-    # Preprocesado de los datos
-    X, y = preprocess_data_steel(df)
-    
-    # Dividir los datos en entrenamiento y prueba
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    
-    # Escalar las características
-    scale=1
-    if scale:
-        scaler = StandardScaler()
-        X_train_scaled = scaler.fit_transform(X_train)
-        X_test_scaled = scaler.transform(X_test)
-
-    # Cargar el modelo sin entrenar
-    #untrainedModel = SVR(kernel='rbf', C=1.0, epsilon=0.1)
-    untrainedModel = LinearRegression()
-    #untrainedModel = RandomForestRegressor(n_estimators=100, random_state=42)
-    #untrainedModel = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)
-    #untrainedModel = XGBRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)
-
-    modelName = untrainedModel.__class__.__name__
-
-    # Entrenar el modelo
-    trainedmodel, train_time = train_model(untrainedModel, X_train_scaled, y_train)
-
-    # Evaluar el modelo
-    [mae, mse, r2] = evaluate_model(trainedmodel, X_train_scaled, X_test_scaled, y_train, y_test, modelName)
-
-    # Guardar los resultados
-    if saveModel and pretrainedModel==0:
-        save_model(trainedmodel, modelName)
-
-    if saveResults and pretrainedModel==0:
-        save_results(mae, mse, r2, train_time, modelName, trainedmodel)
-
-#- 
-def train_model(untrainedModel,X_train, y_train):
-    # Entrenar el modelo
-    start_time = time.time()    
-    untrainedModel.fit(X_train, y_train)
-    training_time = time.time() - start_time
-    return untrainedModel, training_time
-
-def evaluate_model(model, X_train, X_test, y_train, y_test,modelName=""):
-    y_train_pred = model.predict(X_train)
-    y_test_pred = model.predict(X_test)
-
-    # Evaluación en el conjunto de prueba
-    mae = mean_absolute_error(y_test, y_test_pred)
-    mse = mean_squared_error(y_test, y_test_pred)
-    r2 = r2_score(y_test, y_test_pred)
-#    accu = accuracy_score(y_test, y_test_pred)
-    if  1:
-        print(f'MAE: {mae:.2f}')
-        print(f'MSE: {mse:.2f}')
-        print(f'R²: {r2:.2f}')
-        #print(f'Accuracy: {accu:.2f}')  
-        plot_results(y_test, y_test_pred, modelName)
-
-    return mae, mse, r2
-
-def save_model(model, modelName):
-    # Guardar el modelo
-    joblib.dump(model, ("./models/" + modelName + ".pkl"))
-
-def save_results(mae,mse, r2, training_time, modelName, model):
-    # Guardar los resultados
-
-    model_params = model.get_params()
-    results_dict = {
-        'ModelName': modelName,
-        'Kernel': model_params.get('kernel','N/A'),
-        'Params': str(model_params),
-        'MAE': mae,
-        'MSE': mse,
-        'R2': r2,
-        'TrainTime': training_time
-    }
-    results_df = pd.DataFrame([results_dict])
-    results_df.to_csv(f'./output/ResultsML/{modelName}_results.csv', index=False)
+# Helper: invertir normalización del target
+def inv_y(scaler_y, arr):
+    arr = np.asarray(arr).reshape(-1, 1)
+    return scaler_y.inverse_transform(
+        np.hstack((arr, np.zeros((len(arr), 2))))
+    )[:, 0]
 
 
-if __name__ == '__main__':
-    # parámetro
-    '''
-   saveModel(boolean): Guardar el modelo entrenado
-   saveResults(boolean): Guardar los resultados de la evaluación
-   pretrainedModel(boolean): Cargar un modelo preentrenado
-   nameModel(string): Nombre del modelo a cargar
-    '''
-    main(saveModel=False, saveResults=False, pretrainedModel=False, pretrainedName="SVR")
+# Crear secuencias y dividir temporalmente
+seq_len = 48
+X_seq, y_seq = create_ML_sequences_with_masked_target(X_clean, target_index=0, seq_length=seq_len)
+
+split_index = int(len(X_seq) * 0.8)
+X_train, X_test = X_seq[:split_index], X_seq[split_index:]
+y_train, y_test = y_seq[:split_index], y_seq[split_index:]
+# ===============================
+# Modelos y sus grids
+models = {
+    'Linear Regression': LinearRegression(),
+    'Ridge Regression': Ridge(),
+    'Lasso Regression': Lasso(),
+    'Random Forest': RandomForestRegressor(),
+    'Gradient Boosting': GradientBoostingRegressor(),
+    'XGBoost': XGBRegressor(tree_method='gpu_hist', predictor='gpu_predictor', gpu_id=0),
+    'SVR': SVR()
+}
+
+params = {
+    'Linear Regression': [{}],
+    'Ridge Regression': {'alpha': [0.01, 0.1, 1, 10]},
+    'Lasso Regression': {'alpha': [0.01, 0.1, 1]},
+    'Random Forest': {'n_estimators': [50, 100, 200], 'max_depth': [5, 10, 15], 'min_samples_split': [2, 5, 10]},
+    'Gradient Boosting': {'n_estimators': [50, 100, 200], 'learning_rate': [0.001, 0.01, 0.1], 'max_depth': [3, 5, 7], 'subsample': [0.7, 0.8, 1.0]},
+    'XGBoost': {'n_estimators': [50, 100, 200], 'learning_rate': [0.001, 0.01, 0.1], 'max_depth': [3, 5, 7], 'subsample': [0.7, 0.8, 1.0], 'gamma': [0, 0.1, 0.5, 1]},
+    'SVR': {'C': [0.1, 1.0, 10.0], 'kernel': ['linear', 'rbf'], 'epsilon': [0.01, 0.1, 0.2]},
+}
+
+
+
+# ===============================
+# Entrenamiento y evaluación
+results = []
+
+for model_name, model in models.items():
+    grid = list(ParameterGrid(params[model_name]))
+
+    for param_set in grid:
+        model.set_params(**param_set)
+
+        start_time = time.time()
+        model.fit(X_train, y_train)
+        training_time = time.time() - start_time
+
+         # --- predicciones en train (para Train_Loss_Final) y valid (para todo lo demás) ---
+        preds_train = model.predict(X_train)
+        preds_valid = model.predict(X_test)
+
+        # --- desescalar ---
+        y_train_real     = inv_y(scaler_y, y_train)
+        y_valid_real     = inv_y(scaler_y, y_test)
+        preds_train_real = inv_y(scaler_y, preds_train)
+        preds_valid_real = inv_y(scaler_y, preds_valid)
+
+        # === pérdidas estilo "history": usamos RMSE como loss ===
+        train_mse  = mean_squared_error(y_train_real, preds_train_real)
+        valid_mse  = mean_squared_error(y_valid_real, preds_valid_real)
+        train_rmse = np.sqrt(train_mse)
+        valid_rmse = np.sqrt(valid_mse)
+
+        Train_Loss_Final = train_rmse
+        Val_Loss_Final   = valid_rmse
+        Overfit_Gap      = Val_Loss_Final - Train_Loss_Final
+        Loss_Ratio       = (Val_Loss_Final / Train_Loss_Final) if Train_Loss_Final != 0 else np.nan
+
+        # === métricas sobre VALIDACIÓN (no sobre test) ===
+        r2      = r2_score(y_valid_real, preds_valid_real)
+        mae     = np.mean(np.abs(y_valid_real - preds_valid_real))
+        mape    = np.mean(np.abs((y_valid_real - preds_valid_real) / y_valid_real)) * 100
+        cvrmse  = np.std((y_valid_real - preds_valid_real) / y_valid_real) * 100
+
+        results.append({
+            'Model': model_name,
+            'Params': param_set,
+            # métricas validación
+            'MSE': valid_mse,
+            'RMSE': valid_rmse,
+            'MAE': mae,
+            'MAPE': mape,
+            'R2': r2,
+            'CVRMSE': cvrmse,
+            # extras
+            'Training Time (s)': training_time,
+            # bloque tipo history
+            'Train_Loss_Final': Train_Loss_Final,
+            'Val_Loss_Final': Val_Loss_Final,
+            'Overfit_Gap': Overfit_Gap,
+            'Loss_Ratio': Loss_Ratio
+
+        })
+
+        print(f"{model_name} - {param_set}")
+        # Guardar resultados
+        results_df = pd.DataFrame(results)
+        results_df.to_csv('./output/ResultsML/01_ML_ablation_results_aaa.csv', index=False)
+
+
+print("Resultados guardados.") 
+
+# ===============================

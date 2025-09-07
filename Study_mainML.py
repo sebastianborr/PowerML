@@ -7,6 +7,7 @@ from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.svm import SVR
 from xgboost import XGBRegressor
 import time
+import joblib
 
 # Cargar datos ya preprocesados
 from scripts.preprocess_data_Tetuan import preprocess_data_electricity
@@ -46,26 +47,32 @@ X_train, X_test = X_seq[:split_index], X_seq[split_index:]
 y_train, y_test = y_seq[:split_index], y_seq[split_index:]
 # ===============================
 # Modelos y sus grids
+#models = {
+#    'Linear Regression': LinearRegression(),
+#    'Ridge Regression': Ridge(),
+#    'Lasso Regression': Lasso(),
+#    'Random Forest': RandomForestRegressor(),
+#    'Gradient Boosting': GradientBoostingRegressor(),
+#    'XGBoost': XGBRegressor(tree_method='gpu_hist', predictor='gpu_predictor', gpu_id=0),
+#    'SVR': SVR()
+#}
+#
+#params = {
+#    'Linear Regression': [{}],
+#    'Ridge Regression': {'alpha': [0.01, 0.1, 1, 10]},
+#    'Lasso Regression': {'alpha': [0.01, 0.1, 1]},
+#    'Random Forest': {'n_estimators': [50, 100, 200], 'max_depth': [5, 10, 15], 'min_samples_split': [2, 5, 10]},
+#    'Gradient Boosting': {'n_estimators': [50, 100, 200], 'learning_rate': [0.001, 0.01, 0.1], 'max_depth': [3, 5, 7], 'subsample': [0.7, 0.8, 1.0]},
+#    'XGBoost': {'n_estimators': [50, 100, 200], 'learning_rate': [0.001, 0.01, 0.1], 'max_depth': [3, 5, 7], 'subsample': [0.7, 0.8, 1.0], 'gamma': [0, 0.1, 0.5, 1]},
+#    'SVR': {'C': [0.1, 1.0, 10.0], 'kernel': ['linear', 'rbf'], 'epsilon': [0.01, 0.1, 0.2]},
+#}
 models = {
-    'Linear Regression': LinearRegression(),
-    'Ridge Regression': Ridge(),
-    'Lasso Regression': Lasso(),
-    'Random Forest': RandomForestRegressor(),
     'Gradient Boosting': GradientBoostingRegressor(),
-    'XGBoost': XGBRegressor(tree_method='gpu_hist', predictor='gpu_predictor', gpu_id=0),
-    'SVR': SVR()
 }
 
 params = {
-    'Linear Regression': [{}],
-    'Ridge Regression': {'alpha': [0.01, 0.1, 1, 10]},
-    'Lasso Regression': {'alpha': [0.01, 0.1, 1]},
-    'Random Forest': {'n_estimators': [50, 100, 200], 'max_depth': [5, 10, 15], 'min_samples_split': [2, 5, 10]},
-    'Gradient Boosting': {'n_estimators': [50, 100, 200], 'learning_rate': [0.001, 0.01, 0.1], 'max_depth': [3, 5, 7], 'subsample': [0.7, 0.8, 1.0]},
-    'XGBoost': {'n_estimators': [50, 100, 200], 'learning_rate': [0.001, 0.01, 0.1], 'max_depth': [3, 5, 7], 'subsample': [0.7, 0.8, 1.0], 'gamma': [0, 0.1, 0.5, 1]},
-    'SVR': {'C': [0.1, 1.0, 10.0], 'kernel': ['linear', 'rbf'], 'epsilon': [0.01, 0.1, 0.2]},
+    'Gradient Boosting': {'n_estimators': [200], 'learning_rate': [0.1], 'max_depth': [ 7], 'subsample': [0.8]},
 }
-
 
 
 # ===============================
@@ -130,9 +137,10 @@ for model_name, model in models.items():
         })
 
         print(f"{model_name} - {param_set}")
+        joblib.dump(model, 'models/GradientBoost_115.pkl')
         # Guardar resultados
-        results_df = pd.DataFrame(results)
-        results_df.to_csv('./output/ResultsML/01_ML_ablation_results_aaa.csv', index=False)
+        #results_df = pd.DataFrame(results)
+        #results_df.to_csv('./output/ResultsML/01_ML_ablation_results_perdidas.csv', index=False)
 
 
 print("Resultados guardados.") 

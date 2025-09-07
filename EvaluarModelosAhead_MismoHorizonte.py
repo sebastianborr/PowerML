@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import joblib
 import matplotlib
-
+import types  # para enlazar el método correctamente
 # Intentamos usar TkAgg (interactivo); si falla (entorno sin GUI) caemos a Agg.
 try:
     matplotlib.use('TkAgg')
@@ -12,161 +12,163 @@ except Exception:
     matplotlib.use('Agg')
 
 import matplotlib.pyplot as plt
-
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 
-# ---- Funciones propias del proyecto (igual que en tu base) ----
+# ---- Funciones propias del proyecto ----
 from scripts.preprocess_data_Tetuan import preprocess_data_electricity
 from scripts.buscarIndexTetuan import fila_para_fecha
-
+matplotlib.rcParams['savefig.directory'] = r'/mnt/c/Users/Sebas/Desktop/PowerML/output/ImagesVarias/cap4_ahead'  # cambia si quieres
 
 # ===================== CONFIG =====================
+NumPrueba = 6                 # identificador en pantalla
+NumAhead  = 48                 # <<<< AHEAD SELECCIONADO (p.e. 1, 6, 12, 24, 48)
+ploteoGraficas = True
+
+DIA, MES, ANIO = 20,12, 2017  # punto de arranque por fecha
+indice_inicial = fila_para_fecha(DIA, MES, ANIO)
+
 MODELS_DIR = "models"
 DATA_CSV   = "data/02_Tetuan_City_power_consumption.csv"
 
-# Coincide con el entrenamiento de tus modelos
-SEQ_LENGTH = 48
-
-# Ventana de predicción (a 10 min -> 6 por hora)
+SEQ_LENGTH = 48               # igual que en entrenamiento
 DIAS_A_PREDECIR = 7
-NUM_PRED = int(6 * 24 * DIAS_A_PREDECIR)
-
-# Punto de arranque: por fecha o por índice
-DIA, MES, ANIO = 6, 3, 2017
-indice_inicial = fila_para_fecha(DIA, MES, ANIO)
-if 0:
-    indice_inicial += 6*12  # offset para probar otro punto desde el medio dia
-
-# Alternativa: fija a mano
-# indice_inicial = 17858
-
+NUM_PUNTOS = int(6 * 24 * DIAS_A_PREDECIR)  # puntos de la serie que quieres evaluar/pintar
 # ==================================================
 
-
-def find_model_files(models_dir: str):
-    """
-    Busca ficheros de modelo que TERMINEN en '_1' seguido de extensión válida.
-    DL: .h5 / .keras
-    ML: .pkl
-    """
+def find_model_files(models_dir: str, ahead: int):
     files = []
+    patron = re.compile(rf"_{ahead}\.(h5|keras|pkl|joblib)$", re.IGNORECASE)
     for fname in os.listdir(models_dir):
-        # Deben terminar en _1.(h5|keras|pkl)
-        if re.search(r"_1\.(h5|keras|pkl)$", fname, re.IGNORECASE):
+        if patron.search(fname):
             full = os.path.join(models_dir, fname)
             if os.path.isfile(full):
                 files.append(full)
-    # Orden para que siempre sea reproducible
     return sorted(files)
-
 
 def is_deep_learning_model(path: str) -> bool:
     return path.lower().endswith((".h5", ".keras"))
 
-
 def load_any_model(path: str):
     if is_deep_learning_model(path):
-        # Cuidamos custom_objects por si usaste 'mse' en compile
         model = load_model(path, compile=False, custom_objects={"mse": tf.keras.losses.mse})
-        model_type = "DL"
+        mtype = "DL"
     else:
         model = joblib.load(path)
-        model_type = "ML"
-    return model, model_type
+        mtype = "ML"
+    return model, mtype
 
-
-def inverse_target(scaler_y, y_pred_scaled):
-    """
-    Invierte el escalado de y suponiendo que el scaler_y espera 3 columnas
-    (como en tu base): target + 2 dummy.
-    y_pred_scaled: array shape (1,) o (1,1) o (n,1)
-    Devuelve float(s) en escala original.
-    """
-    y = np.atleast_2d(np.array(y_pred_scaled).reshape(-1, 1))  # (n,1)
-    y3 = np.hstack([y, np.zeros((y.shape[0], 2))])             # (n,3)
-    inv = scaler_y.inverse_transform(y3)[:, 0]
+def inverse_block(scaler_y, block_scaled_vec):
+    block_scaled_vec = np.array(block_scaled_vec).reshape(-1)         # (NumAhead,)
+    mat = np.zeros((len(block_scaled_vec), 3))                        # (NumAhead, 3)
+    mat[:, 0] = block_scaled_vec
+    inv = scaler_y.inverse_transform(mat)[:, 0]                       # (NumAhead,)
     return inv
 
-
-def predict_series_for_model(model, model_type, X_exog, y_scaled, scaler_y,
-                             start_index, seq_len, num_steps):
+# ---------- NUEVO: hace una predicción de bloque en ESCALA ----------
+def predict_block_scaled(model, mtype, seq_mat, seq_len, ahead):
     """
-    Calcula valores reales + predicción directa + autoregresiva para un modelo.
-    Devuelve: valores_reales, pred_directa, pred_auto
+    Devuelve SIEMPRE un vector (ahead,) en ESCALA.
+    - Si el modelo devuelve (ahead,), lo usamos tal cual.
+    - Si devuelve (1,), iteramos 'ahead' veces dentro del bloque,
+      realimentando cada predicción en la ventana (posición -ahead + h).
+    - Si devolviera >ahead, cogemos los últimos 'ahead'; si <ahead (y !=1), rellenamos.
+    """
+    def _call(m, mt, s):
+        X = s.reshape(1, seq_len + ahead, s.shape[1]) if mt == "DL" else s.reshape(1, -1)
+        y = np.array(m.predict(X)).reshape(-1)
+        return y
+
+    y0 = _call(model, mtype, seq_mat)
+    if y0.size == ahead:
+        return y0
+
+    if y0.size == 1:
+        preds = []
+        seq_iter = seq_mat.copy()
+        for h in range(ahead):
+            yh = _call(model, mtype, seq_iter).reshape(-1)
+            yh = float(yh[0])
+            preds.append(yh)
+            # realimenta en la posición correspondiente del tramo de incógnitas
+            seq_iter[-ahead + h, 0] = yh
+        return np.array(preds, dtype=float)
+
+    # Casos raros: ajustar tamaño
+    if y0.size > ahead:
+        return y0[-ahead:]
+    return np.pad(y0, (0, ahead - y0.size), mode='edge')
+
+def predict_for_model_ahead(model, mtype, X_exog, y_scaled, scaler_y,
+                            start_index, seq_len, ahead, num_points):
+    """
+    Multi-ahead para un 'ahead' fijo. Devuelve: reales_concat, directa_concat, autoreg_concat
     """
     n = X_exog.shape[0]
-    valores_reales = []
-    pred_directa = []
-    pred_auto = []
+    num_blocks = max(0, num_points // ahead)
 
-    # Guardamos las predicciones en ESCALA y para autoregresivo (para realimentar)
-    pred_auto_scaled_buffer = []
+    reales_blocks = []
+    directa_blocks = []
+    autoreg_blocks = []
 
-    for k in range(num_steps):
-        start_idx = start_index + k
-        end_idx = start_idx + seq_len + 1
-        if end_idx >= n:
+    auto_scaled_flat = np.array([], dtype=float)  # buffer en ESCALA (plano)
+
+    for k in range(num_blocks):
+        start_idx = start_index + ahead * k
+        end_idx   = start_idx + seq_len + ahead
+        if end_idx > n:
             break
 
-        # ====== Construcción secuencia DIRECTA (usa sólo reales) ======
+        # ====== Secuencia DIRECTA ======
         seq_dir = np.concatenate(
             [X_exog[start_idx:end_idx, 0:1], X_exog[start_idx:end_idx, 3:]],
             axis=1
         ).copy()
-        seq_dir[-1, 0] = 0  # incógnita
+        seq_dir[-ahead:, 0] = 0  # incógnitas
 
-        if model_type == "DL":
-            X_in = seq_dir.reshape(1, seq_len + 1, seq_dir.shape[1])
-        else:
-            X_in = seq_dir.reshape(1, -1)
+        pred_scaled_direct = predict_block_scaled(model, mtype, seq_dir, seq_len, ahead)  # (ahead,)
+        pred_direct_real   = inverse_block(scaler_y, pred_scaled_direct)
 
-        y_pred_scaled_direct = model.predict(X_in)
-        # Normalizamos formatos (a (1,1) -> (1,))
-        y_pred_scaled_direct = np.array(y_pred_scaled_direct).reshape(-1, 1)
+        # Reales del mismo tramo
+        reales_block = scaler_y.inverse_transform(y_scaled[end_idx - ahead:end_idx])[:, 0]
 
-        # Inversa para pintar
-        y_pred_direct = inverse_target(scaler_y, y_pred_scaled_direct)[0]
+        directa_blocks.append(pred_direct_real)
+        reales_blocks.append(reales_block)
 
-        # Valor real (desescalado)
-        y_real = scaler_y.inverse_transform(
-            y_scaled[end_idx - 1].reshape(1, -1)
-        )[0, 0]
-
-        valores_reales.append(float(y_real))
-        pred_directa.append(float(y_pred_direct))
-
-        # ====== Construcción secuencia AUTORREGRESIVA ======
+        # ====== Secuencia AUTORREGRESIVA ======
         seq_auto = np.concatenate(
             [X_exog[start_idx:end_idx, 0:1], X_exog[start_idx:end_idx, 3:]],
             axis=1
         ).copy()
 
-        # Sustituimos hasta SEQ_LENGTH valores previos por predicciones propias (ESCALA y)
+        # Realimenta con los j últimos valores predichos (buffer plano entre bloques)
         max_back = min(k, seq_len)
         for j in range(1, max_back + 1):
-            seq_auto[-(j + 1), 0] = float(np.array(pred_auto_scaled_buffer[-j]).reshape(()))
+            if auto_scaled_flat.size >= j:
+                seq_auto[-(j + ahead), 0] = float(auto_scaled_flat[-j])
 
-        seq_auto[-1, 0] = 0  # incógnita
+        seq_auto[-ahead:, 0] = 0  # incógnitas
 
-        if model_type == "DL":
-            X_in_auto = seq_auto.reshape(1, seq_len + 1, seq_auto.shape[1])
-        else:
-            X_in_auto = seq_auto.reshape(1, -1)
+        pred_scaled_auto = predict_block_scaled(model, mtype, seq_auto, seq_len, ahead)   # (ahead,)
+        auto_scaled_flat = np.hstack([auto_scaled_flat, pred_scaled_auto]) if auto_scaled_flat.size else pred_scaled_auto
 
-        y_pred_scaled_auto = model.predict(X_in_auto)
-        y_pred_scaled_auto = np.array(y_pred_scaled_auto).reshape(-1, 1)  # (1,1) -> (1,1)
-        pred_auto_scaled_buffer.append(float(y_pred_scaled_auto[0, 0]))
+        pred_auto_real   = inverse_block(scaler_y, pred_scaled_auto)
+        autoreg_blocks.append(pred_auto_real)
 
-        # Para pintar, desescalamos
-        y_pred_auto_real = inverse_target(scaler_y, y_pred_scaled_auto)[0]
-        pred_auto.append(float(y_pred_auto_real))
+    # Concatena todos los bloques
+    reales_concat   = np.concatenate(reales_blocks)  if reales_blocks  else np.array([])
+    directa_concat  = np.concatenate(directa_blocks) if directa_blocks else np.array([])
+    autoreg_concat  = np.concatenate(autoreg_blocks) if autoreg_blocks else np.array([])
 
-    return np.array(valores_reales), np.array(pred_directa), np.array(pred_auto)
+    # recorta a 'num_points'
+    reales_concat  = reales_concat[:num_points]
+    directa_concat = directa_concat[:num_points]
+    autoreg_concat = autoreg_concat[:num_points]
 
+    return reales_concat, directa_concat, autoreg_concat
 
 def main():
-    # -------- Carga datos y escaladores --------
+    # -------- Carga datos y scalers --------
     print("Cargando dataset y preprocesando...")
     df = pd.read_csv(DATA_CSV)
     X_exog, y_scaled, _, _ = preprocess_data_electricity(df)
@@ -175,105 +177,149 @@ def main():
     scaler_X = joblib.load(os.path.join(MODELS_DIR, "scaler_X.pkl"))
     scaler_y = joblib.load(os.path.join(MODELS_DIR, "scaler_y.pkl"))
 
-    # -------- Descubre modelos --------
-    model_files = find_model_files(MODELS_DIR)
+    # -------- Descubre modelos para el AHEAD deseado --------
+    model_files = find_model_files(MODELS_DIR, NumAhead)
     if not model_files:
-        raise RuntimeError(f"No se encontraron modelos que terminen en '_1' en {MODELS_DIR}")
+        raise RuntimeError(f"No se encontraron modelos que terminen en '_{NumAhead}' en {MODELS_DIR}")
 
-    print("Modelos detectados:")
+    print("Modelos detectados (ahead =", NumAhead, "):")
     for f in model_files:
         print("  -", os.path.basename(f))
 
-    # -------- Ejecuta predicciones para cada modelo --------
-    resultados = {}  # nombre_modelo -> dict con arrays
-    valores_reales_ref = None
-    min_len = None
+    # -------- Ejecuta predicciones --------
+    resultados = {}          # nombre_modelo -> dict con arrays
+    reales_ref = None
 
     for path in model_files:
         model, mtype = load_any_model(path)
         name = os.path.splitext(os.path.basename(path))[0]
 
         print(f"\nProcesando {name} ({mtype}) ...")
-        reales, pdir, paut = predict_series_for_model(
+        reales, pdir, paut = predict_for_model_ahead(
             model, mtype, X_exog, y_scaled, scaler_y,
             start_index=indice_inicial,
             seq_len=SEQ_LENGTH,
-            num_steps=NUM_PRED
+            ahead=NumAhead,
+            num_points=NUM_PUNTOS
         )
 
-        # Guardamos y ajustamos longitud común
+        # Debug útil (puedes dejarlo o quitarlo):
+        print(f"  tamaños -> reales:{len(reales)} directa:{len(pdir)} autoreg:{len(paut)}")
+
+        if reales_ref is None:
+            reales_ref = reales
+
+        # iguala longitudes a la mínima por seguridad en ESTA iteración
+        L = min(len(reales_ref), len(reales), len(pdir), len(paut))
+        reales_ref = reales_ref[:L]
         resultados[name] = {
-            "tipo": mtype,
-            "directa": pdir,
-            "autoregresiva": paut
+            "directa": pdir[:L],
+            "autoregresiva": paut[:L]
         }
 
-        if valores_reales_ref is None:
-            valores_reales_ref = reales
-            min_len = len(reales)
-        else:
-            min_len = min(min_len, len(reales), len(valores_reales_ref))
+    # ---------- Alineación FINAL ----------
+    if resultados:
+        final_L = len(reales_ref)
+        for v in resultados.values():
+            final_L = min(final_L, len(v["directa"]), len(v["autoregresiva"]))
+        reales_ref = reales_ref[:final_L]
+        for k in list(resultados.keys()):
+            resultados[k]["directa"]       = resultados[k]["directa"][:final_L]
+            resultados[k]["autoregresiva"] = resultados[k]["autoregresiva"][:final_L]
 
-        min_len = min(min_len, len(pdir), len(paut))
+    pasos = np.arange(len(reales_ref))
 
-    # Recorta todo al mínimo común para superponer correctamente
-    pasos = np.arange(min_len)
-    valores_reales_ref = valores_reales_ref[:min_len]
-
-    for k in resultados:
-        resultados[k]["directa"] = resultados[k]["directa"][:min_len]
-        resultados[k]["autoregresiva"] = resultados[k]["autoregresiva"][:min_len]
-
-    # -------- Métricas rápidas (MAE, MSE, RMSE) --------
+    # -------- Métricas (MAE y RMSE) --------
+    print(f"\nEvaluación {DIA:02d}/{MES:02d}/{ANIO} - Prueba Nº {NumPrueba} para Ahead={NumAhead}")
     print("\nMAE (Directa / Autoregresiva):")
     for k, v in resultados.items():
-        mae_dir = np.mean(np.abs(valores_reales_ref - v["directa"]))
-        mae_aut = np.mean(np.abs(valores_reales_ref - v["autoregresiva"]))
-        print(f"  {k:30s}  {mae_dir:8.3f} / {mae_aut:8.3f}")
+        mae_dir = np.mean(np.abs(reales_ref - v["directa"]))
+        mae_aut = np.mean(np.abs(reales_ref - v["autoregresiva"]))
+        print(f"  {k:35s}  {mae_dir:8.3f} / {mae_aut:8.3f}")
 
-
-    print("\nMSE (Directa / Autoregresiva):")
-    for k, v in resultados.items():
-        mse_dir = np.mean((valores_reales_ref - v["directa"]) ** 2)
-        mse_aut = np.mean((valores_reales_ref - v["autoregresiva"]) ** 2)
-        print(f"  {k:30s}  {mse_dir:8.3f} / {mse_aut:8.3f}")
-   
     print("\nRMSE (Directa / Autoregresiva):")
     for k, v in resultados.items():
-        rmse_dir = np.sqrt(np.mean((valores_reales_ref - v["directa"]) ** 2))
-        rmse_aut = np.sqrt(np.mean((valores_reales_ref - v["autoregresiva"]) ** 2))
-        print(f"  {k:30s}  {rmse_dir:8.3f} / {rmse_aut:8.3f}")
+        rmse_dir = np.sqrt(np.mean((reales_ref - v["directa"])**2))
+        rmse_aut = np.sqrt(np.mean((reales_ref - v["autoregresiva"])**2))
+        print(f"  {k:35s}  {rmse_dir:8.3f} / {rmse_aut:8.3f}")
+    print("\n")
 
     # -------- Gráficas --------
-    plt.figure(figsize=(12, 7))
-    plt.plot(pasos, valores_reales_ref, label="Real", linewidth=2)
 
-    for k, v in resultados.items():
-        plt.plot(pasos, v["directa"], linestyle="--", label=f"{k} (Directa)")
-    
-    plt.title(f"Direct prediction from {DIA}/{MES}/{ANIO} - Prediction days: {DIAS_A_PREDECIR:.0f}")
-    plt.xlabel("Step")
-    plt.ylabel("kWh")
-    plt.grid(True)
-    plt.legend(ncol=2, fontsize=8)
-    plt.tight_layout()
-    plt.show()
+    # # Primera gráfica directa, donde muestro el resultado de los 6 primeros de los 12 modelos 
+    # plt.figure(figsize=(12, 7))
+    # plt.plot(pasos, reales_ref, label="Actual", linewidth=1.6, color='tab:blue')
+    # for k, v in resultados.items():
+    #     plt.plot(pasos, v["directa"], linestyle=(0, (5, 3)), label=f"{k} (Direct)")
+    # plt.title(f"Consumption forecast: Actual & direct predictions - Start {DIA:02d}/{MES:02d}/{ANIO} | ahead={NumAhead}")
+    # plt.ylabel("Energy [kWh]"); plt.xlabel("10-min step"); plt.grid(True); plt.legend(ncol=2, fontsize=8)
+    # plt.tight_layout(); plt.show()
+    if ploteoGraficas==True:
+        # Obtener lista de keys ordenados (Python 3.7+ mantiene el orden de inserción)
+        model_keys = list(resultados.keys())
+        first_six = model_keys[:6]
+        last_six = model_keys[6:]
 
-    plt.figure(figsize=(12, 7))
-    plt.plot(pasos, valores_reales_ref, label="Real", linewidth=2)
+        # Primera gráfica direct: primeros 6 modelos
+        plt.figure(figsize=(12, 7))
+        plt.plot(pasos, reales_ref, label="Actual", linewidth=1.6, color='tab:blue')
+        for k in first_six:
+            plt.plot(pasos, resultados[k]["directa"], linestyle=(0, (5, 3)), label=f"{k} (Direct)")
+        plt.title(f"Consumption forecast: Actual and direct predictions - Start {DIA:02d}/{MES:02d}/{ANIO} | ahead={NumAhead}")
+        plt.ylabel("Energy [kWh]")
+        plt.xlabel("10-min step")
+        plt.grid(True)
+        plt.legend(ncol=2, fontsize=8)
+        plt.tight_layout()
+        plt.show()
 
-    for k, v in resultados.items():
-        plt.plot(pasos, v["autoregresiva"], linestyle="--", label=f"{k} (Autoregresiva)")
-    
-    plt.title(f"Autoregressive prediction from {DIA}/{MES}/{ANIO} - Prediction days: {DIAS_A_PREDECIR:.0f}")
-    plt.xlabel("Step")
-    plt.ylabel("kWh")
-    plt.grid(True)
-    plt.legend(ncol=2, fontsize=8)
-    plt.tight_layout()
-    plt.show()
+        # Segunda gráfica directo: últimos 6 modelos
+        plt.figure(figsize=(12, 7))
+        plt.plot(pasos, reales_ref, label="Actual", linewidth=1.6, color='tab:blue')
+        for k in last_six:
+            plt.plot(pasos, resultados[k]["directa"], linestyle=(0, (5, 3)), label=f"{k} (Direct)")
 
-    aa=1
+        plt.title(f"Consumption forecast: Actual and direct predictions - Start {DIA:02d}/{MES:02d}/{ANIO} | ahead={NumAhead}")
+        plt.ylabel("Energy [kWh]")
+        plt.xlabel("10-min step")
+        plt.grid(True)
+        plt.legend(ncol=2, fontsize=8)
+        plt.tight_layout()
+        plt.show()  
+
+        # plt.figure(figsize=(12, 7))
+        # plt.plot(pasos, reales_ref, label="Actual", linewidth=1.6)
+        # for k, v in resultados.items():
+        #     plt.plot(pasos, v["autoregresiva"], linestyle=(0, (5, 3)), label=f"{k} (Autoreg)")
+        # plt.title(f"Consumption forecast: Actual & autoregressive - Start {DIA:02d}/{MES:02d}/{ANIO} | ahead={NumAhead}")
+        # plt.ylabel("Energy [kWh]"); plt.xlabel("10-min step"); plt.grid(True); plt.legend(ncol=2, fontsize=8)
+        # plt.tight_layout(); plt.show()
+
+        # Primera gráfica autoregresiva, donde muestro el resultado de los 6 primeros de los 12 modelos
+        plt.figure(figsize=(12, 7))
+        plt.plot(pasos, reales_ref, label="Actual", linewidth=1.6, color='tab:blue')
+        for k in first_six:
+            plt.plot(pasos, resultados[k]["autoregresiva"], linestyle=(0, (5, 3)), label=f"{k} (Autoreg)")
+        plt.title(f"Consumption forecast: Actual and autoregressive predictions - Start {DIA:02d}/{MES:02d}/{ANIO} | ahead={NumAhead}")
+        plt.ylabel("Energy [kWh]")
+        plt.xlabel("10-min step")
+        plt.grid(True)
+        plt.legend(ncol=2, fontsize=8)
+        plt.tight_layout()
+        plt.show()  
+
+        # Segunda gráfica autoregresiva, donde muestro el resultado de los 6 últimos de los 12 modelos
+        plt.figure(figsize=(12, 7))
+        plt.plot(pasos, reales_ref, label="Actual", linewidth=1.6, color='tab:blue')
+        for k in last_six:
+            plt.plot(pasos, resultados[k]["autoregresiva"], linestyle=(0, (5, 3)), label=f"{k} (Autoreg)")
+        plt.title(f"Consumption forecast: Actual and autoregressive predictions - Start {DIA:02d}/{MES:02d}/{ANIO} | ahead={NumAhead}")
+        plt.ylabel("Energy [kWh]")
+        plt.xlabel("10-min step")
+        plt.grid(True)
+        plt.legend(ncol=2, fontsize=8)
+        plt.tight_layout()
+        plt.show()
 
 if __name__ == "__main__":
     main()
