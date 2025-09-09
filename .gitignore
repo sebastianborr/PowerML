@@ -3,4 +3,6 @@ models/RandomForestRegressor.pkl
 Apuntes de interés.docx
 PDFs/
 output/ImagesVarias
-output/MemoryFigures
+output/ResultsAheadFiguresData/
+./PruebaCreaciónAnexos_DL.py
+./PruebaCreaciónAnexos_ML.py

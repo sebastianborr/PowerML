@@ -1,3 +1,8 @@
+#-----------------------------------
+#Con este script puedes evaluar un horizonte(paso ahead)
+# para todos los modelos presentes en un directorio.
+#-----------------------------------
+
 import os
 import re
 import numpy as np

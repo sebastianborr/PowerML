@@ -1,0 +1,488 @@
+% --- Archivo generado automáticamente con script de python ---
+
+ \chapter*{Anexo}
+
+
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{0.55}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash\tiny}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash\tiny\setlength{\baselineskip}{0.4\baselineskip}}m{#1}}
+\captionsetup{justification=centering,singlelinecheck=false,margin=0pt}
+
+\begin{longtable}{C{0.8cm} L{2cm} C{1.15cm} C{1.15cm} C{1.15cm} C{1.15cm} C{0.85cm} C{1.25cm} C{1.2cm} C{1.5cm} C{1.0cm}}
+\caption{Results of the ablation study of the Machine learning architecture.}\label{tab:01_ml_ablation_results_perdidas}\\
+\toprule
+\textbf{ID} & \textbf{Config.} & \textbf{MSE} & \textbf{RMSE} & \textbf{MAE} & \textbf{MAPE} & \textbf{R\textsuperscript{2}} & \textbf{CVRMSE} & \textbf{Training\newline Time (s)} & \textbf{Overfit\newline Gap} & \textbf{Loss\newline Ratio} \\
+\midrule
+\endfirsthead
+
+\caption[]{Results of the ablation study of the Machine learning architecture.}\\
+\toprule
+\textbf{ID} & \textbf{Config.} & \textbf{MSE} & \textbf{RMSE} & \textbf{MAE} & \textbf{MAPE} & \textbf{R\textsuperscript{2}} & \textbf{CVRMSE} & \textbf{Training\newline Time (s)} & \textbf{Overfit\newline Gap} & \textbf{Loss\newline Ratio} \\
+\midrule
+\endhead
+
+\midrule
+\endfoot
+
+\bottomrule
+\endlastfoot
+1 & Linear Regression:\newline  & 141776.29 & 376.53 & 252.09 & 0.87 & 1 & 1.26 & 0.88 & -60.543908 & 0.86 \\
+2 & Ridge Regression:\newline alpha=0.01 & 141877.73 & 376.67 & 252.12 & 0.87 & 1 & 1.26 & 0.19 & -60.413898 & 0.86 \\
+3 & Ridge Regression:\newline alpha=0.1 & 143002.98 & 378.16 & 252.65 & 0.88 & 1 & 1.26 & 0.2 & -59.291826 & 0.86 \\
+4 & Ridge Regression:\newline alpha=1 & 158254.53 & 397.81 & 263.42 & 0.91 & 1 & 1.31 & 0.21 & -53.272749 & 0.88 \\
+5 & Ridge Regression:\newline alpha=10 & 265867.72 & 515.62 & 346.11 & 1.2 & 0.99 & 1.66 & 0.18 & -45.975812 & 0.92 \\
+6 & Lasso Regression:\newline alpha=0.01 & 4796216.96 & 2190.03 & 1859.82 & 7.23 & 0.87 & 7.17 & 3.27 & 15.625081 & 1.01 \\
+7 & Lasso Regression:\newline alpha=0.1 & 51073484.12 & 7146.57 & 6004.68 & 23.43 & -0.34 & 24.64 & 0.19 & -20.620023 & 1 \\
+8 & Lasso Regression:\newline alpha=1 & 51073484.12 & 7146.57 & 6004.68 & 23.43 & -0.34 & 24.64 & 0.13 & -20.620023 & 1 \\
+9 & Random Forest:\newline max\_depth=5,\newline min\_samples\_split=2,\newline n\_estimators=50 & 363156.9 & 602.63 & 435.79 & 1.48 & 0.99 & 1.94 & 155.66 & -36.752922 & 0.94 \\
+10 & Random Forest:\newline max\_depth=5,\newline min\_samples\_split=2,\newline n\_estimators=100 & 366169.09 & 605.12 & 435.92 & 1.48 & 0.99 & 1.95 & 289.49 & -33.181601 & 0.95 \\
+11 & Random Forest:\newline max\_depth=5,\newline min\_samples\_split=2,\newline n\_estimators=200 & 358232.25 & 598.53 & 431.07 & 1.46 & 0.99 & 1.93 & 597.8 & -38.577704 & 0.94 \\
+12 & Random Forest:\newline max\_depth=5,\newline min\_samples\_split=5,\newline n\_estimators=50 & 361047.26 & 600.87 & 432.52 & 1.47 & 0.99 & 1.94 & 149.53 & -35.486951 & 0.94 \\
+13 & Random Forest:\newline max\_depth=5,\newline min\_samples\_split=5,\newline n\_estimators=100 & 361284.02 & 601.07 & 433.51 & 1.47 & 0.99 & 1.94 & 293.46 & -36.394789 & 0.94 \\
+14 & Random Forest:\newline max\_depth=5,\newline min\_samples\_split=5,\newline n\_estimators=200 & 356002.1 & 596.66 & 429.94 & 1.46 & 0.99 & 1.93 & 598.08 & -40.202596 & 0.94 \\
+15 & Random Forest:\newline max\_depth=5,\newline min\_samples\_split=10,\newline n\_estimators=50 & 357328.77 & 597.77 & 428.27 & 1.45 & 0.99 & 1.91 & 147.14 & -36.857328 & 0.94 \\
+16 & Random Forest:\newline max\_depth=5,\newline min\_samples\_split=10,\newline n\_estimators=100 & 367999.61 & 606.63 & 436.9 & 1.48 & 0.99 & 1.95 & 290.59 & -32.860473 & 0.95 \\
+17 & Random Forest:\newline max\_depth=5,\newline min\_samples\_split=10,\newline n\_estimators=200 & 357672.33 & 598.06 & 429.28 & 1.45 & 0.99 & 1.92 & 627.38 & -37.410473 & 0.94 \\
+18 & Random Forest:\newline max\_depth=10,\newline min\_samples\_split=2,\newline n\_estimators=50 & 150481.85 & 387.92 & 267.59 & 0.93 & 1 & 1.29 & 269.58 & 99.428901 & 1.34 \\
+19 & Random Forest:\newline max\_depth=10,\newline min\_samples\_split=2,\newline n\_estimators=100 & 150345.15 & 387.74 & 267.28 & 0.93 & 1 & 1.28 & 529.02 & 101.082790 & 1.35 \\
+20 & Random Forest:\newline max\_depth=10,\newline min\_samples\_split=2,\newline n\_estimators=200 & 148797.62 & 385.74 & 265.66 & 0.92 & 1 & 1.29 & 1066.13 & 99.690336 & 1.35 \\
+21 & Random Forest:\newline max\_depth=10,\newline min\_samples\_split=5,\newline n\_estimators=50 & 151491.27 & 389.22 & 267.65 & 0.93 & 1 & 1.3 & 261.08 & 96.190329 & 1.33 \\
+22 & Random Forest:\newline max\_depth=10,\newline min\_samples\_split=5,\newline n\_estimators=100 & 149222.53 & 386.29 & 266.1 & 0.92 & 1 & 1.29 & 527.68 & 94.224497 & 1.32 \\
+23 & Random Forest:\newline max\_depth=10,\newline min\_samples\_split=5,\newline n\_estimators=200 & 149435.28 & 386.57 & 266.92 & 0.92 & 1 & 1.29 & 1058.31 & 95.272409 & 1.33 \\
+24 & Random Forest:\newline max\_depth=10,\newline min\_samples\_split=10,\newline n\_estimators=50 & 150048.05 & 387.36 & 266.87 & 0.92 & 1 & 1.29 & 274.54 & 91.887739 & 1.31 \\
+25 & Random Forest:\newline max\_depth=10,\newline min\_samples\_split=10,\newline n\_estimators=100 & 149296.06 & 386.39 & 265.57 & 0.92 & 1 & 1.29 & 548.87 & 92.885181 & 1.32 \\
+26 & Random Forest:\newline max\_depth=10,\newline min\_samples\_split=10,\newline n\_estimators=200 & 148903.82 & 385.88 & 265.81 & 0.92 & 1 & 1.29 & 1080.86 & 91.662446 & 1.31 \\
+27 & Random Forest:\newline max\_depth=15,\newline min\_samples\_split=2,\newline n\_estimators=50 & 142872.21 & 377.98 & 260.28 & 0.9 & 1 & 1.27 & 369.28 & 200.962790 & 2.14 \\
+28 & Random Forest:\newline max\_depth=15,\newline min\_samples\_split=2,\newline n\_estimators=100 & 143612.18 & 378.96 & 260.68 & 0.9 & 1 & 1.27 & 759.03 & 203.683264 & 2.16 \\
+29 & Random Forest:\newline max\_depth=15,\newline min\_samples\_split=2,\newline n\_estimators=200 & 142150.81 & 377.03 & 258.96 & 0.9 & 1 & 1.26 & 1498.74 & 202.137978 & 2.16 \\
+30 & Random Forest:\newline max\_depth=15,\newline min\_samples\_split=5,\newline n\_estimators=50 & 144728.8 & 380.43 & 262.72 & 0.91 & 1 & 1.28 & 367.5 & 188.572266 & 1.98 \\
+31 & Random Forest:\newline max\_depth=15,\newline min\_samples\_split=5,\newline n\_estimators=100 & 143400.99 & 378.68 & 261.35 & 0.91 & 1 & 1.27 & 711.89 & 189.268092 & 2 \\
+32 & Random Forest:\newline max\_depth=15,\newline min\_samples\_split=5,\newline n\_estimators=200 & 142892.33 & 378.01 & 259.45 & 0.9 & 1 & 1.26 & 1378.22 & 187.875811 & 1.99 \\
+33 & Random Forest:\newline max\_depth=15,\newline min\_samples\_split=10,\newline n\_estimators=50 & 146923.82 & 383.31 & 263.56 & 0.91 & 1 & 1.28 & 335.28 & 176.322837 & 1.85 \\
+34 & Random Forest:\newline max\_depth=15,\newline min\_samples\_split=10,\newline n\_estimators=100 & 144592.12 & 380.25 & 260.97 & 0.9 & 1 & 1.27 & 673.28 & 175.653349 & 1.86 \\
+35 & Random Forest:\newline max\_depth=15,\newline min\_samples\_split=10,\newline n\_estimators=200 & 143289.95 & 378.54 & 260.08 & 0.9 & 1 & 1.26 & 1340.55 & 172.847759 & 1.84 \\
+36 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.7 & 46380107.07 & 6810.29 & 5719.46 & 22.32 & -0.22 & 23.5 & 98.95 & -18.215639 & 1 \\
+37 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.8 & 46376460.17 & 6810.03 & 5719.32 & 22.32 & -0.22 & 23.5 & 114.19 & -18.472051 & 1 \\
+38 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=1.0 & 46375660.23 & 6809.97 & 5719.24 & 22.32 & -0.22 & 23.5 & 142.6 & -18.558061 & 1 \\
+39 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.7 & 42129249.48 & 6490.7 & 5448.18 & 21.27 & -0.11 & 22.42 & 198.37 & -15.783533 & 1 \\
+40 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.8 & 42128905.9 & 6490.68 & 5448.14 & 21.27 & -0.11 & 22.42 & 226.88 & -15.840599 & 1 \\
+41 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=1.0 & 42131596.04 & 6490.89 & 5448.18 & 21.27 & -0.11 & 22.42 & 284.46 & -15.639223 & 1 \\
+42 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.7 & 34816123.76 & 5900.52 & 4946.47 & 19.32 & 0.09 & 20.42 & 395.49 & -8.176807 & 1 \\
+43 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.8 & 34827886.64 & 5901.52 & 4947.01 & 19.32 & 0.08 & 20.43 & 453.63 & -7.272416 & 1 \\
+44 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=1.0 & 34824996.06 & 5901.27 & 4946.88 & 19.32 & 0.08 & 20.43 & 567.59 & -7.442802 & 1 \\
+45 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.7 & 46246616.06 & 6800.49 & 5715.25 & 22.3 & -0.22 & 23.44 & 155.66 & -20.350767 & 1 \\
+46 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.8 & 46242079.24 & 6800.15 & 5714.98 & 22.3 & -0.22 & 23.44 & 179.49 & -20.683194 & 1 \\
+47 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=1.0 & 46241654.53 & 6800.12 & 5714.9 & 22.3 & -0.22 & 23.44 & 225.12 & -20.736567 & 1 \\
+48 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.7 & 41880911.38 & 6471.55 & 5440.06 & 21.22 & -0.1 & 22.3 & 312.85 & -19.965498 & 1 \\
+49 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.8 & 41882237.62 & 6471.65 & 5440.21 & 21.23 & -0.1 & 22.3 & 357.9 & -19.874906 & 1 \\
+50 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=1.0 & 41874776.68 & 6471.07 & 5439.7 & 21.22 & -0.1 & 22.3 & 450.1 & -20.446725 & 1 \\
+51 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.7 & 34364793.71 & 5862.15 & 4930.2 & 19.23 & 0.1 & 20.19 & 622.69 & -18.375008 & 1 \\
+52 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.8 & 34365204.88 & 5862.18 & 4930.23 & 19.23 & 0.1 & 20.19 & 715.86 & -18.351626 & 1 \\
+53 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=1.0 & 34363942.65 & 5862.08 & 4930.21 & 19.23 & 0.1 & 20.19 & 900.78 & -18.405702 & 1 \\
+54 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.7 & 46241792.52 & 6800.13 & 5714.21 & 22.3 & -0.22 & 23.44 & 209.96 & -19.057124 & 1 \\
+55 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.8 & 46242396.82 & 6800.18 & 5714.27 & 22.3 & -0.22 & 23.44 & 240.27 & -18.987459 & 1 \\
+56 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=1.0 & 46242661.21 & 6800.2 & 5714.28 & 22.3 & -0.22 & 23.45 & 301.72 & -18.959817 & 1 \\
+57 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.7 & 41871123.43 & 6470.79 & 5438.09 & 21.22 & -0.1 & 22.31 & 418.51 & -17.392053 & 1 \\
+58 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.8 & 41870746.38 & 6470.76 & 5438.07 & 21.22 & -0.1 & 22.31 & 485.57 & -17.416664 & 1 \\
+59 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=1.0 & 41873405.62 & 6470.97 & 5438.15 & 21.22 & -0.1 & 22.31 & 603.58 & -17.190756 & 1 \\
+60 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.7 & 34335939.6 & 5859.69 & 4925.5 & 19.22 & 0.1 & 20.19 & 837.88 & -14.267054 & 1 \\
+61 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.8 & 34337146.87 & 5859.79 & 4925.6 & 19.22 & 0.1 & 20.19 & 961.4 & -14.147892 & 1 \\
+62 & Gradient Boosting:\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=1.0 & 34340677.25 & 5860.09 & 4925.62 & 19.22 & 0.1 & 20.19 & 1210.31 & -13.827036 & 1 \\
+63 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.7 & 19666813.33 & 4434.73 & 3698.79 & 14.47 & 0.48 & 15.46 & 99.07 & 9.583665 & 1 \\
+64 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.8 & 19647865.83 & 4432.59 & 3696.46 & 14.46 & 0.48 & 15.46 & 113.95 & 7.589609 & 1 \\
+65 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=1.0 & 19660227.27 & 4433.99 & 3697.76 & 14.47 & 0.48 & 15.46 & 143.21 & 8.856403 & 1 \\
+66 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.7 & 7707468.43 & 2776.23 & 2291.61 & 8.98 & 0.8 & 9.8 & 197.75 & 7.084020 & 1 \\
+67 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.8 & 7710375.34 & 2776.76 & 2291.6 & 8.98 & 0.8 & 9.8 & 227.32 & 7.227094 & 1 \\
+68 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=1.0 & 7701978.31 & 2775.24 & 2290.29 & 8.98 & 0.8 & 9.8 & 285.47 & 6.065712 & 1 \\
+69 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.7 & 1416068.85 & 1189.99 & 957.21 & 3.73 & 0.96 & 4.17 & 396.34 & -15.960600 & 0.99 \\
+70 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.8 & 1415283.59 & 1189.66 & 956.65 & 3.72 & 0.96 & 4.17 & 455.45 & -16.590333 & 0.99 \\
+71 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=1.0 & 1417310.31 & 1190.51 & 956.73 & 3.73 & 0.96 & 4.18 & 572.3 & -15.502716 & 0.99 \\
+72 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.7 & 18932454.48 & 4351.14 & 3664.02 & 14.29 & 0.5 & 14.97 & 156.58 & -15.380127 & 1 \\
+73 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.8 & 18932716.55 & 4351.17 & 3664.95 & 14.3 & 0.5 & 14.97 & 179.36 & -15.036305 & 1 \\
+74 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=1.0 & 18931482.81 & 4351.03 & 3663.45 & 14.29 & 0.5 & 14.97 & 226.24 & -15.375018 & 1 \\
+75 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.7 & 7098875.68 & 2664.37 & 2245.27 & 8.76 & 0.81 & 9.15 & 323.91 & -13.810648 & 0.99 \\
+76 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.8 & 7103358.27 & 2665.21 & 2245.33 & 8.76 & 0.81 & 9.15 & 360.31 & -12.869325 & 1 \\
+77 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=1.0 & 7099672.2 & 2664.52 & 2245.52 & 8.76 & 0.81 & 9.15 & 453.55 & -13.556401 & 0.99 \\
+78 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.7 & 1114155.74 & 1055.54 & 867.72 & 3.39 & 0.97 & 3.56 & 627.53 & -15.288416 & 0.99 \\
+79 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.8 & 1112603.74 & 1054.8 & 865.86 & 3.38 & 0.97 & 3.56 & 721.64 & -15.642747 & 0.99 \\
+80 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=1.0 & 1113624.47 & 1055.28 & 865.72 & 3.38 & 0.97 & 3.56 & 906.73 & -15.216075 & 0.99 \\
+81 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.7 & 18889500.48 & 4346.21 & 3656.32 & 14.27 & 0.5 & 14.96 & 210.14 & -5.388431 & 1 \\
+82 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.8 & 18889224.64 & 4346.17 & 3656.49 & 14.27 & 0.5 & 14.96 & 241.35 & -5.466385 & 1 \\
+83 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=1.0 & 18890316.23 & 4346.3 & 3655.96 & 14.27 & 0.5 & 14.96 & 304.13 & -5.247794 & 1 \\
+84 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.7 & 7072433.7 & 2659.4 & 2239.47 & 8.75 & 0.81 & 9.14 & 420.28 & 6.839926 & 1 \\
+85 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.8 & 7070835.13 & 2659.1 & 2239.95 & 8.75 & 0.81 & 9.13 & 482.7 & 6.615332 & 1 \\
+86 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=1.0 & 7069960.87 & 2658.94 & 2239.64 & 8.75 & 0.81 & 9.13 & 607.95 & 6.355840 & 1 \\
+87 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.7 & 1112910.31 & 1054.95 & 880.15 & 3.43 & 0.97 & 3.59 & 844.2 & 32.092962 & 1.03 \\
+88 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.8 & 1116959.99 & 1056.86 & 882.4 & 3.44 & 0.97 & 3.6 & 968.28 & 33.778811 & 1.03 \\
+89 & Gradient Boosting:\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=1.0 & 1120141.12 & 1058.37 & 883.43 & 3.44 & 0.97 & 3.6 & 1215.36 & 35.006641 & 1.03 \\
+90 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.7 & 245623.84 & 495.6 & 355.47 & 1.27 & 0.99 & 1.58 & 99.95 & 23.516872 & 1.05 \\
+91 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.8 & 230630.89 & 480.24 & 340.7 & 1.21 & 0.99 & 1.56 & 114.35 & 11.762571 & 1.03 \\
+92 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=1.0 & 242489.43 & 492.43 & 352.91 & 1.26 & 0.99 & 1.59 & 143.83 & 21.636576 & 1.05 \\
+93 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.7 & 219912.36 & 468.95 & 338.32 & 1.19 & 0.99 & 1.46 & 203.49 & 55.273062 & 1.13 \\
+94 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.8 & 228734.26 & 478.26 & 349.31 & 1.23 & 0.99 & 1.47 & 247.45 & 66.134598 & 1.16 \\
+95 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=1.0 & 222713.04 & 471.92 & 344.19 & 1.22 & 0.99 & 1.48 & 290.58 & 61.225109 & 1.15 \\
+96 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.7 & 209865.96 & 458.11 & 330.7 & 1.16 & 0.99 & 1.43 & 411.6 & 85.471627 & 1.23 \\
+97 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.8 & 208006.25 & 456.08 & 327.13 & 1.14 & 0.99 & 1.41 & 468.07 & 79.509514 & 1.21 \\
+98 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=1.0 & 204400.01 & 452.11 & 328.95 & 1.16 & 0.99 & 1.43 & 583.41 & 81.585657 & 1.22 \\
+99 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.7 & 161769.73 & 402.21 & 285.06 & 1 & 1 & 1.31 & 158.63 & 42.316511 & 1.12 \\
+100 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.8 & 163486.24 & 404.33 & 288.67 & 1.01 & 1 & 1.33 & 181.83 & 45.607891 & 1.13 \\
+101 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=1.0 & 160477.82 & 400.6 & 286.34 & 1 & 1 & 1.3 & 227.92 & 45.264500 & 1.13 \\
+102 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.7 & 158221.79 & 397.77 & 283.76 & 0.99 & 1 & 1.29 & 324.98 & 72.869016 & 1.22 \\
+103 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.8 & 150568.08 & 388.03 & 275.59 & 0.95 & 1 & 1.26 & 372.19 & 66.049842 & 1.21 \\
+104 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=1.0 & 153345.71 & 391.59 & 277.08 & 0.95 & 1 & 1.26 & 467.95 & 70.826350 & 1.22 \\
+105 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.7 & 162343.78 & 402.92 & 285.58 & 0.99 & 1 & 1.32 & 664.75 & 105.238828 & 1.35 \\
+106 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.8 & 153085.4 & 391.26 & 280.08 & 0.97 & 1 & 1.28 & 764.57 & 99.419344 & 1.34 \\
+107 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=1.0 & 150343.05 & 387.74 & 273.53 & 0.94 & 1 & 1.27 & 959.99 & 93.267642 & 1.32 \\
+108 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.7 & 131377.87 & 362.46 & 255.67 & 0.9 & 1 & 1.21 & 212.7 & 78.442396 & 1.28 \\
+109 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.8 & 136219.14 & 369.08 & 259.16 & 0.91 & 1 & 1.23 & 242.84 & 87.598024 & 1.31 \\
+110 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=1.0 & 133422.15 & 365.27 & 256.21 & 0.9 & 1 & 1.22 & 306.42 & 85.556633 & 1.31 \\
+111 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.7 & 130675.73 & 361.49 & 253.63 & 0.88 & 1 & 1.21 & 442.19 & 107.118349 & 1.42 \\
+112 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.8 & 141560.33 & 376.25 & 263.75 & 0.93 & 1 & 1.29 & 508.52 & 123.492412 & 1.49 \\
+113 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=1.0 & 133698.02 & 365.65 & 255.23 & 0.9 & 1 & 1.24 & 636.38 & 117.666924 & 1.47 \\
+114 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.7 & 137305.8 & 370.55 & 260.63 & 0.91 & 1 & 1.27 & 915.43 & 143.758091 & 1.63 \\
+115 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.8 & 129290.16 & 359.57 & 254.01 & 0.89 & 1 & 1.21 & 1049.77 & 134.280218 & 1.6 \\
+116 & Gradient Boosting:\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=1.0 & 133901.32 & 365.93 & 255.71 & 0.9 & 1 & 1.25 & 1328.25 & 139.773314 & 1.62 \\
+117 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.7 & 46377423.23 & 6810.1 & 5719.34 & 22.32 & -0.22 & 23.5 & 0.92 & -18.572252 & 1 \\
+118 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.8 & 46377438.74 & 6810.1 & 5719.31 & 22.32 & -0.22 & 23.5 & 0.42 & -18.549472 & 1 \\
+119 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=1.0 & 46376202.29 & 6810.01 & 5719.26 & 22.32 & -0.22 & 23.5 & 0.4 & -18.625938 & 1 \\
+120 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.7 & 42132163.09 & 6490.93 & 5448.27 & 21.27 & -0.11 & 22.42 & 0.63 & -15.856118 & 1 \\
+121 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.8 & 42135314.44 & 6491.17 & 5448.39 & 21.27 & -0.11 & 22.42 & 0.6 & -15.578925 & 1 \\
+122 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=1.0 & 42135198.8 & 6491.16 & 5448.3 & 21.27 & -0.11 & 22.42 & 0.66 & -15.554479 & 1 \\
+123 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.7 & 34822301.79 & 5901.04 & 4946.72 & 19.32 & 0.08 & 20.43 & 1.02 & -8.245035 & 1 \\
+124 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.8 & 34825344.09 & 5901.3 & 4946.8 & 19.32 & 0.08 & 20.43 & 1.02 & -7.878553 & 1 \\
+125 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=1.0 & 34827754.74 & 5901.5 & 4946.81 & 19.32 & 0.08 & 20.43 & 1 & -7.587614 & 1 \\
+126 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.7 & 46251683.66 & 6800.86 & 5715.44 & 22.3 & -0.22 & 23.44 & 0.63 & -20.471576 & 1 \\
+127 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.8 & 46250699.65 & 6800.79 & 5715.42 & 22.3 & -0.22 & 23.44 & 0.61 & -20.502796 & 1 \\
+128 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=1.0 & 46247328.94 & 6800.54 & 5715.18 & 22.3 & -0.22 & 23.44 & 0.66 & -20.697797 & 1 \\
+129 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.7 & 41892493.6 & 6472.44 & 5440.74 & 21.23 & -0.1 & 22.31 & 1.07 & -20.007426 & 1 \\
+130 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.8 & 41890915 & 6472.32 & 5440.68 & 21.23 & -0.1 & 22.31 & 1.01 & -20.043158 & 1 \\
+131 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=1.0 & 41888858.19 & 6472.16 & 5440.59 & 21.23 & -0.1 & 22.31 & 1.02 & -20.102339 & 1 \\
+132 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.7 & 34376909.66 & 5863.18 & 4931.06 & 19.24 & 0.1 & 20.2 & 2.71 & -19.093021 & 1 \\
+133 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.8 & 34374207.14 & 5862.95 & 4930.89 & 19.24 & 0.1 & 20.2 & 1.94 & -19.141245 & 1 \\
+134 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=1.0 & 34374238.48 & 5862.95 & 4931.1 & 19.24 & 0.1 & 20.19 & 1.82 & -18.896324 & 1 \\
+135 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.7 & 46239824.58 & 6799.99 & 5714.01 & 22.3 & -0.22 & 23.44 & 1.06 & -20.422145 & 1 \\
+136 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.8 & 46238207.37 & 6799.87 & 5713.93 & 22.29 & -0.22 & 23.44 & 1.06 & -20.442522 & 1 \\
+137 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=1.0 & 46242483.74 & 6800.18 & 5713.99 & 22.3 & -0.22 & 23.44 & 1.11 & -19.981506 & 1 \\
+138 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.7 & 41864503.77 & 6470.28 & 5437.59 & 21.22 & -0.1 & 22.3 & 1.89 & -20.280690 & 1 \\
+139 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.8 & 41862803.83 & 6470.15 & 5437.46 & 21.22 & -0.1 & 22.3 & 1.88 & -20.231068 & 1 \\
+140 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=1.0 & 41867102.09 & 6470.48 & 5437.61 & 21.22 & -0.1 & 22.3 & 1.92 & -19.624430 & 1 \\
+141 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.7 & 34321408.35 & 5858.45 & 4924.45 & 19.22 & 0.1 & 20.19 & 3.58 & -20.043108 & 1 \\
+142 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.8 & 34320044.83 & 5858.33 & 4924.31 & 19.22 & 0.1 & 20.19 & 3.54 & -19.785785 & 1 \\
+143 & XGBoost:\newline gamma=0,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=1.0 & 34322699.07 & 5858.56 & 4923.96 & 19.22 & 0.1 & 20.19 & 3.7 & -18.995445 & 1 \\
+144 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.7 & 19666296.28 & 4434.67 & 3698.43 & 14.47 & 0.48 & 15.46 & 0.39 & 8.451086 & 1 \\
+145 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.8 & 19647481.14 & 4432.55 & 3697 & 14.46 & 0.48 & 15.45 & 0.4 & 6.480059 & 1 \\
+146 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=1.0 & 19681157.54 & 4436.35 & 3698.55 & 14.47 & 0.48 & 15.47 & 0.41 & 10.309046 & 1 \\
+147 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.7 & 7705914.11 & 2775.95 & 2290.37 & 8.98 & 0.8 & 9.8 & 0.61 & 5.042698 & 1 \\
+148 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.8 & 7710686.95 & 2776.81 & 2291.52 & 8.98 & 0.8 & 9.8 & 0.6 & 5.807418 & 1 \\
+149 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=1.0 & 7708988.56 & 2776.51 & 2290.6 & 8.98 & 0.8 & 9.8 & 0.61 & 5.759622 & 1 \\
+150 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.7 & 1417867.47 & 1190.74 & 956.73 & 3.73 & 0.96 & 4.18 & 1.96 & -18.627706 & 0.98 \\
+151 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.8 & 1417431.86 & 1190.56 & 956.58 & 3.72 & 0.96 & 4.18 & 1.06 & -18.837539 & 0.98 \\
+152 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=1.0 & 1418742.66 & 1191.11 & 957 & 3.73 & 0.96 & 4.18 & 1.01 & -18.100379 & 0.99 \\
+153 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.7 & 18935015.99 & 4351.44 & 3664.04 & 14.29 & 0.5 & 14.96 & 0.6 & -18.463796 & 1 \\
+154 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.8 & 18933980.71 & 4351.32 & 3664.08 & 14.29 & 0.5 & 14.96 & 0.63 & -18.254487 & 1 \\
+155 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=1.0 & 18934824.65 & 4351.42 & 3664.44 & 14.29 & 0.5 & 14.96 & 0.62 & -17.757541 & 1 \\
+156 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.7 & 7098912.49 & 2664.38 & 2245.73 & 8.76 & 0.81 & 9.14 & 1.02 & -18.742297 & 0.99 \\
+157 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.8 & 7094694.92 & 2663.59 & 2244.21 & 8.75 & 0.81 & 9.13 & 1.02 & -19.230075 & 0.99 \\
+158 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=1.0 & 7098347.79 & 2664.27 & 2245.8 & 8.76 & 0.81 & 9.14 & 1.01 & -17.975113 & 0.99 \\
+159 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.7 & 1116174.35 & 1056.49 & 869.86 & 3.39 & 0.97 & 3.57 & 1.8 & -21.074717 & 0.98 \\
+160 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.8 & 1114230.85 & 1055.57 & 867.34 & 3.39 & 0.97 & 3.56 & 1.82 & -21.714502 & 0.98 \\
+161 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=1.0 & 1113514.59 & 1055.23 & 866.61 & 3.38 & 0.97 & 3.56 & 1.77 & -21.579264 & 0.98 \\
+162 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.7 & 18871005.5 & 4344.08 & 3653.82 & 14.27 & 0.5 & 14.96 & 1.08 & -16.624806 & 1 \\
+163 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.8 & 18872180.22 & 4344.21 & 3653.8 & 14.27 & 0.5 & 14.96 & 1.07 & -15.672513 & 1 \\
+164 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=1.0 & 18864218.75 & 4343.3 & 3652.17 & 14.26 & 0.5 & 14.96 & 1.07 & -15.514100 & 1 \\
+165 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.7 & 7068466.96 & 2658.66 & 2237.64 & 8.74 & 0.81 & 9.14 & 1.98 & -6.706627 & 1 \\
+166 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.8 & 7070326.91 & 2659.01 & 2237.57 & 8.74 & 0.81 & 9.14 & 1.99 & -5.293910 & 1 \\
+167 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=1.0 & 7081937.11 & 2661.19 & 2239.3 & 8.75 & 0.81 & 9.15 & 2.09 & -1.618217 & 1 \\
+168 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.7 & 1133146.45 & 1064.49 & 884.38 & 3.45 & 0.97 & 3.64 & 3.78 & 25.978215 & 1.03 \\
+169 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.8 & 1136027.57 & 1065.85 & 885.8 & 3.46 & 0.97 & 3.65 & 4.82 & 28.505839 & 1.03 \\
+170 & XGBoost:\newline gamma=0,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=1.0 & 1135954.27 & 1065.81 & 885.89 & 3.46 & 0.97 & 3.65 & 3.8 & 29.931985 & 1.03 \\
+171 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.7 & 246423.43 & 496.41 & 353.91 & 1.26 & 0.99 & 1.6 & 0.4 & 19.467531 & 1.04 \\
+172 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.8 & 239886.84 & 489.78 & 345.4 & 1.21 & 0.99 & 1.56 & 0.39 & 11.818338 & 1.02 \\
+173 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=1.0 & 234618.74 & 484.37 & 343.61 & 1.22 & 0.99 & 1.57 & 0.38 & 6.974202 & 1.01 \\
+174 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.7 & 231046.41 & 480.67 & 346.92 & 1.22 & 0.99 & 1.51 & 0.55 & 60.112151 & 1.14 \\
+175 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.8 & 227851.28 & 477.34 & 342.71 & 1.19 & 0.99 & 1.48 & 0.59 & 56.652358 & 1.13 \\
+176 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=1.0 & 217122.25 & 465.96 & 341.46 & 1.21 & 0.99 & 1.48 & 0.57 & 48.219801 & 1.12 \\
+177 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.7 & 204772.93 & 452.52 & 327.99 & 1.16 & 0.99 & 1.43 & 0.88 & 69.495350 & 1.18 \\
+178 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.8 & 206477.53 & 454.4 & 329.81 & 1.15 & 0.99 & 1.42 & 0.89 & 71.982471 & 1.19 \\
+179 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=1.0 & 198571.28 & 445.61 & 325.09 & 1.15 & 0.99 & 1.42 & 0.88 & 63.930992 & 1.17 \\
+180 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.7 & 161150.53 & 401.44 & 286.42 & 1 & 1 & 1.33 & 0.58 & 30.081291 & 1.08 \\
+181 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.8 & 164122.04 & 405.12 & 289.74 & 1.02 & 1 & 1.34 & 0.6 & 33.222582 & 1.09 \\
+182 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=1.0 & 159129.15 & 398.91 & 285.51 & 1 & 1 & 1.31 & 0.58 & 28.342860 & 1.08 \\
+183 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.7 & 153836.18 & 392.22 & 280.41 & 0.97 & 1 & 1.29 & 0.89 & 57.534747 & 1.17 \\
+184 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.8 & 155902.15 & 394.84 & 282 & 0.98 & 1 & 1.3 & 0.87 & 59.001192 & 1.18 \\
+185 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=1.0 & 153915.49 & 392.32 & 280.85 & 0.97 & 1 & 1.28 & 0.86 & 59.825262 & 1.18 \\
+186 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.7 & 149458.13 & 386.6 & 275.95 & 0.96 & 1 & 1.28 & 1.45 & 82.204145 & 1.27 \\
+187 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.8 & 154769.02 & 393.41 & 281.08 & 0.98 & 1 & 1.3 & 1.43 & 90.743298 & 1.3 \\
+188 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=1.0 & 149696.21 & 386.91 & 273.98 & 0.95 & 1 & 1.28 & 1.41 & 83.804228 & 1.28 \\
+189 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.7 & 142512.46 & 377.51 & 264.71 & 0.94 & 1 & 1.28 & 1.09 & 74.577352 & 1.25 \\
+190 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.8 & 142924.98 & 378.05 & 266.93 & 0.95 & 1 & 1.31 & 1.08 & 78.481240 & 1.26 \\
+191 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=1.0 & 139218.4 & 373.12 & 260.17 & 0.92 & 1 & 1.27 & 1.08 & 76.405197 & 1.26 \\
+192 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.7 & 135909.04 & 368.66 & 255.65 & 0.9 & 1 & 1.26 & 1.74 & 102.778209 & 1.39 \\
+193 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.8 & 137366.73 & 370.63 & 260.02 & 0.92 & 1 & 1.28 & 2.68 & 107.827440 & 1.41 \\
+194 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=1.0 & 133542.83 & 365.44 & 251.9 & 0.88 & 1 & 1.26 & 1.77 & 104.634426 & 1.4 \\
+195 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.7 & 136673.97 & 369.69 & 257.28 & 0.9 & 1 & 1.26 & 2.88 & 136.850338 & 1.59 \\
+196 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.8 & 137564.29 & 370.9 & 260.64 & 0.92 & 1 & 1.28 & 2.87 & 141.399707 & 1.62 \\
+197 & XGBoost:\newline gamma=0,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=1.0 & 134405.14 & 366.61 & 252.98 & 0.88 & 1 & 1.26 & 2.77 & 136.372939 & 1.59 \\
+198 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.7 & 46377423.23 & 6810.1 & 5719.34 & 22.32 & -0.22 & 23.5 & 0.4 & -18.572252 & 1 \\
+199 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.8 & 46377438.74 & 6810.1 & 5719.31 & 22.32 & -0.22 & 23.5 & 0.41 & -18.549472 & 1 \\
+200 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=1.0 & 46376202.29 & 6810.01 & 5719.26 & 22.32 & -0.22 & 23.5 & 0.39 & -18.625938 & 1 \\
+201 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.7 & 42132163.09 & 6490.93 & 5448.27 & 21.27 & -0.11 & 22.42 & 0.6 & -15.856118 & 1 \\
+202 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.8 & 42135314.44 & 6491.17 & 5448.39 & 21.27 & -0.11 & 22.42 & 0.6 & -15.578925 & 1 \\
+203 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=1.0 & 42135198.8 & 6491.16 & 5448.3 & 21.27 & -0.11 & 22.42 & 0.63 & -15.554479 & 1 \\
+204 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.7 & 34822301.79 & 5901.04 & 4946.72 & 19.32 & 0.08 & 20.43 & 1.02 & -8.245035 & 1 \\
+205 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.8 & 34825344.09 & 5901.3 & 4946.8 & 19.32 & 0.08 & 20.43 & 1.01 & -7.878553 & 1 \\
+206 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=1.0 & 34827754.74 & 5901.5 & 4946.81 & 19.32 & 0.08 & 20.43 & 1.04 & -7.587614 & 1 \\
+207 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.7 & 46251646.44 & 6800.86 & 5715.43 & 22.3 & -0.22 & 23.44 & 0.61 & -20.477036 & 1 \\
+208 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.8 & 46250691.91 & 6800.79 & 5715.42 & 22.3 & -0.22 & 23.44 & 0.61 & -20.503898 & 1 \\
+209 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=1.0 & 46247328.94 & 6800.54 & 5715.18 & 22.3 & -0.22 & 23.44 & 0.63 & -20.697797 & 1 \\
+210 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.7 & 41892282.34 & 6472.42 & 5440.71 & 21.23 & -0.1 & 22.31 & 1.14 & -20.035027 & 1 \\
+211 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.8 & 41891000.35 & 6472.33 & 5440.69 & 21.23 & -0.1 & 22.31 & 1.11 & -20.037673 & 1 \\
+212 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=1.0 & 41888858.19 & 6472.16 & 5440.59 & 21.23 & -0.1 & 22.31 & 1.07 & -20.102339 & 1 \\
+213 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.7 & 34376138.53 & 5863.12 & 4930.92 & 19.24 & 0.1 & 20.2 & 1.87 & -19.195708 & 1 \\
+214 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.8 & 34374083.8 & 5862.94 & 4930.86 & 19.24 & 0.1 & 20.2 & 2.77 & -19.155851 & 1 \\
+215 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=1.0 & 34374238.48 & 5862.95 & 4931.1 & 19.24 & 0.1 & 20.19 & 1.89 & -18.896324 & 1 \\
+216 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.7 & 46249134.6 & 6800.67 & 5715.17 & 22.3 & -0.22 & 23.45 & 0.97 & -20.250470 & 1 \\
+217 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.8 & 46248769.13 & 6800.64 & 5715.14 & 22.3 & -0.22 & 23.44 & 0.93 & -20.128805 & 1 \\
+218 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=1.0 & 46242150.99 & 6800.16 & 5714.64 & 22.3 & -0.22 & 23.44 & 0.94 & -20.401812 & 1 \\
+219 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.7 & 41885669.47 & 6471.91 & 5440.12 & 21.23 & -0.1 & 22.31 & 1.6 & -19.739786 & 1 \\
+220 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.8 & 41882261.7 & 6471.65 & 5439.74 & 21.22 & -0.1 & 22.31 & 1.6 & -19.711504 & 1 \\
+221 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=1.0 & 41870080.33 & 6470.71 & 5438.83 & 21.22 & -0.1 & 22.3 & 1.64 & -20.238807 & 1 \\
+222 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.7 & 34359300.23 & 5861.68 & 4929.57 & 19.23 & 0.1 & 20.2 & 2.9 & -19.142773 & 1 \\
+223 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.8 & 34355933.71 & 5861.39 & 4929.13 & 19.23 & 0.1 & 20.19 & 2.97 & -18.876707 & 1 \\
+224 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=1.0 & 34343081.07 & 5860.3 & 4927.97 & 19.23 & 0.1 & 20.19 & 3.03 & -19.115755 & 1 \\
+225 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.7 & 19666296.28 & 4434.67 & 3698.43 & 14.47 & 0.48 & 15.46 & 0.39 & 8.451086 & 1 \\
+226 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.8 & 19647481.14 & 4432.55 & 3697 & 14.46 & 0.48 & 15.45 & 0.39 & 6.480059 & 1 \\
+227 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=1.0 & 19681157.54 & 4436.35 & 3698.55 & 14.47 & 0.48 & 15.47 & 0.39 & 10.309046 & 1 \\
+228 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.7 & 7705914.11 & 2775.95 & 2290.37 & 8.98 & 0.8 & 9.8 & 0.63 & 5.042698 & 1 \\
+229 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.8 & 7710686.95 & 2776.81 & 2291.52 & 8.98 & 0.8 & 9.8 & 0.62 & 5.807418 & 1 \\
+230 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=1.0 & 7708988.56 & 2776.51 & 2290.6 & 8.98 & 0.8 & 9.8 & 0.62 & 5.759622 & 1 \\
+231 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.7 & 1417867.47 & 1190.74 & 956.73 & 3.73 & 0.96 & 4.18 & 1.06 & -18.627706 & 0.98 \\
+232 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.8 & 1417431.86 & 1190.56 & 956.58 & 3.72 & 0.96 & 4.18 & 1.02 & -18.837539 & 0.98 \\
+233 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=1.0 & 1418742.66 & 1191.11 & 957 & 3.73 & 0.96 & 4.18 & 1.02 & -18.100379 & 0.99 \\
+234 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.7 & 18926746.29 & 4350.49 & 3661.66 & 14.29 & 0.5 & 14.97 & 0.62 & -20.192375 & 1 \\
+235 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.8 & 18930165.91 & 4350.88 & 3662.98 & 14.29 & 0.5 & 14.97 & 0.62 & -19.037527 & 1 \\
+236 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=1.0 & 18935912.62 & 4351.54 & 3664.46 & 14.29 & 0.5 & 14.97 & 0.66 & -17.687920 & 1 \\
+237 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.7 & 7119047.2 & 2668.15 & 2244.56 & 8.76 & 0.81 & 9.17 & 1.06 & -19.659681 & 0.99 \\
+238 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.8 & 7107441.29 & 2665.98 & 2242.88 & 8.75 & 0.81 & 9.16 & 1.08 & -20.338987 & 0.99 \\
+239 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=1.0 & 7102290.97 & 2665.01 & 2244.16 & 8.75 & 0.81 & 9.15 & 1.03 & -19.620134 & 0.99 \\
+240 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.7 & 1163395.55 & 1078.61 & 884.9 & 3.45 & 0.97 & 3.64 & 1.76 & -25.685012 & 0.98 \\
+241 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.8 & 1157426.32 & 1075.84 & 883.04 & 3.44 & 0.97 & 3.63 & 1.82 & -24.081997 & 0.98 \\
+242 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=1.0 & 1145450.24 & 1070.26 & 878.63 & 3.43 & 0.97 & 3.6 & 1.74 & -23.345004 & 0.98 \\
+243 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.7 & 18890390.8 & 4346.31 & 3656.68 & 14.27 & 0.5 & 14.95 & 0.83 & -21.407167 & 1 \\
+244 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.8 & 18897938.09 & 4347.18 & 3658.32 & 14.28 & 0.5 & 14.96 & 0.91 & -19.228515 & 1 \\
+245 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=1.0 & 18902314.52 & 4347.68 & 3660.3 & 14.28 & 0.5 & 14.96 & 0.92 & -16.925616 & 1 \\
+246 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.7 & 7093068.54 & 2663.28 & 2237.31 & 8.74 & 0.81 & 9.14 & 1.37 & -21.832961 & 0.99 \\
+247 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.8 & 7078789.41 & 2660.6 & 2235.03 & 8.73 & 0.81 & 9.13 & 1.43 & -21.988012 & 0.99 \\
+248 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=1.0 & 7052200.29 & 2655.6 & 2230.97 & 8.72 & 0.81 & 9.11 & 1.49 & -23.066939 & 0.99 \\
+249 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.7 & 1160918.64 & 1077.46 & 883.18 & 3.44 & 0.97 & 3.63 & 2.62 & -25.467600 & 0.98 \\
+250 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.8 & 1156044.4 & 1075.2 & 882.78 & 3.44 & 0.97 & 3.62 & 2.38 & -22.908478 & 0.98 \\
+251 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=1.0 & 1140176.31 & 1067.79 & 875.9 & 3.42 & 0.97 & 3.59 & 2.54 & -22.784651 & 0.98 \\
+252 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.7 & 249810.15 & 499.81 & 352.66 & 1.25 & 0.99 & 1.61 & 0.43 & -5.344989 & 0.99 \\
+253 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.8 & 248620.79 & 498.62 & 353.21 & 1.25 & 0.99 & 1.6 & 0.42 & -0.078202 & 1 \\
+254 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=1.0 & 246236.51 & 496.22 & 350.49 & 1.24 & 0.99 & 1.6 & 0.43 & 3.338862 & 1.01 \\
+255 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.7 & 247266.8 & 497.26 & 349.76 & 1.24 & 0.99 & 1.6 & 0.49 & -7.003853 & 0.99 \\
+256 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.8 & 248794.79 & 498.79 & 355.52 & 1.26 & 0.99 & 1.6 & 0.5 & 2.690003 & 1.01 \\
+257 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=1.0 & 246671.24 & 496.66 & 352.24 & 1.25 & 0.99 & 1.59 & 0.52 & 5.227642 & 1.01 \\
+258 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.7 & 247343.91 & 497.34 & 349.87 & 1.24 & 0.99 & 1.6 & 0.73 & -6.926169 & 0.99 \\
+259 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.8 & 248678.02 & 498.68 & 355.35 & 1.26 & 0.99 & 1.6 & 0.71 & 2.572762 & 1.01 \\
+260 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=1.0 & 246674.71 & 496.66 & 352.25 & 1.25 & 0.99 & 1.59 & 0.76 & 5.231110 & 1.01 \\
+261 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.7 & 246961.9 & 496.95 & 361.38 & 1.28 & 0.99 & 1.57 & 0.58 & 23.018749 & 1.05 \\
+262 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.8 & 234893.06 & 484.66 & 350.44 & 1.23 & 0.99 & 1.54 & 0.51 & 17.307546 & 1.04 \\
+263 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=1.0 & 236059.27 & 485.86 & 355.05 & 1.24 & 0.99 & 1.53 & 0.53 & 28.627266 & 1.06 \\
+264 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.7 & 246704.71 & 496.69 & 361.02 & 1.27 & 0.99 & 1.57 & 0.64 & 22.759798 & 1.05 \\
+265 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.8 & 232565.76 & 482.25 & 347.77 & 1.22 & 0.99 & 1.53 & 0.63 & 15.771287 & 1.03 \\
+266 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=1.0 & 236066.07 & 485.87 & 355.06 & 1.24 & 0.99 & 1.53 & 0.6 & 28.634245 & 1.06 \\
+267 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.7 & 244366 & 494.33 & 358.56 & 1.26 & 0.99 & 1.56 & 0.84 & 21.353447 & 1.05 \\
+268 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.8 & 232440.12 & 482.12 & 347.59 & 1.22 & 0.99 & 1.53 & 0.81 & 15.640821 & 1.03 \\
+269 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=1.0 & 236069.75 & 485.87 & 355.07 & 1.24 & 0.99 & 1.53 & 0.84 & 28.637919 & 1.06 \\
+270 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.7 & 239311.66 & 489.19 & 353.71 & 1.24 & 0.99 & 1.56 & 0.56 & 17.114508 & 1.04 \\
+271 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.8 & 242235.15 & 492.17 & 358.13 & 1.26 & 0.99 & 1.56 & 0.57 & 23.351680 & 1.05 \\
+272 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=1.0 & 237311.97 & 487.15 & 354.15 & 1.24 & 0.99 & 1.54 & 0.58 & 30.144776 & 1.07 \\
+273 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.7 & 236613.64 & 486.43 & 350.69 & 1.23 & 0.99 & 1.55 & 0.68 & 15.291527 & 1.03 \\
+274 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.8 & 242101.95 & 492.04 & 357.95 & 1.26 & 0.99 & 1.56 & 0.7 & 23.216435 & 1.05 \\
+275 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=1.0 & 237322.19 & 487.16 & 354.16 & 1.24 & 0.99 & 1.54 & 0.75 & 30.155271 & 1.07 \\
+276 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.7 & 236633.53 & 486.45 & 350.72 & 1.23 & 0.99 & 1.55 & 0.89 & 15.312016 & 1.03 \\
+277 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.8 & 241958.45 & 491.89 & 357.75 & 1.26 & 0.99 & 1.56 & 0.9 & 23.070425 & 1.05 \\
+278 & XGBoost:\newline gamma=0.1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=1.0 & 237326.57 & 487.16 & 354.17 & 1.24 & 0.99 & 1.54 & 0.94 & 30.159722 & 1.07 \\
+279 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.7 & 46377423.23 & 6810.1 & 5719.34 & 22.32 & -0.22 & 23.5 & 0.42 & -18.572252 & 1 \\
+280 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.8 & 46377438.74 & 6810.1 & 5719.31 & 22.32 & -0.22 & 23.5 & 0.42 & -18.549472 & 1 \\
+281 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=1.0 & 46376202.29 & 6810.01 & 5719.26 & 22.32 & -0.22 & 23.5 & 0.4 & -18.625938 & 1 \\
+282 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.7 & 42132163.09 & 6490.93 & 5448.27 & 21.27 & -0.11 & 22.42 & 0.6 & -15.856118 & 1 \\
+283 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.8 & 42135314.44 & 6491.17 & 5448.39 & 21.27 & -0.11 & 22.42 & 0.63 & -15.578925 & 1 \\
+284 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=1.0 & 42135198.8 & 6491.16 & 5448.3 & 21.27 & -0.11 & 22.42 & 0.63 & -15.554479 & 1 \\
+285 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.7 & 34822301.79 & 5901.04 & 4946.72 & 19.32 & 0.08 & 20.43 & 1.05 & -8.245035 & 1 \\
+286 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.8 & 34825344.09 & 5901.3 & 4946.8 & 19.32 & 0.08 & 20.43 & 1.04 & -7.878553 & 1 \\
+287 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=1.0 & 34827754.74 & 5901.5 & 4946.81 & 19.32 & 0.08 & 20.43 & 1.15 & -7.587614 & 1 \\
+288 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.7 & 46271192.08 & 6802.29 & 5714.77 & 22.3 & -0.22 & 23.46 & 0.61 & -20.492637 & 1 \\
+289 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.8 & 46272321.05 & 6802.38 & 5714.87 & 22.3 & -0.22 & 23.46 & 0.63 & -20.327532 & 1 \\
+290 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=1.0 & 46259746.8 & 6801.45 & 5714.18 & 22.3 & -0.22 & 23.45 & 0.64 & -20.804088 & 1 \\
+291 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.7 & 41922165.65 & 6474.73 & 5438.92 & 21.22 & -0.1 & 22.33 & 1.06 & -20.530021 & 1 \\
+292 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.8 & 41926609.04 & 6475.08 & 5439.23 & 21.22 & -0.1 & 22.33 & 1.96 & -20.000141 & 1 \\
+293 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=1.0 & 41902769.71 & 6473.23 & 5437.75 & 21.22 & -0.1 & 22.32 & 1.08 & -21.074220 & 1 \\
+294 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.7 & 34426459.64 & 5867.41 & 4927.36 & 19.23 & 0.1 & 20.25 & 1.93 & -20.159756 & 1 \\
+295 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.8 & 34433817.66 & 5868.03 & 4927.9 & 19.23 & 0.1 & 20.25 & 1.88 & -19.196271 & 1 \\
+296 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=1.0 & 34409036.04 & 5865.92 & 4926.34 & 19.22 & 0.1 & 20.24 & 1.83 & -20.063315 & 1 \\
+297 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.7 & 46271192.08 & 6802.29 & 5714.77 & 22.3 & -0.22 & 23.46 & 0.64 & -20.492637 & 1 \\
+298 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.8 & 46272321.05 & 6802.38 & 5714.87 & 22.3 & -0.22 & 23.46 & 0.65 & -20.327532 & 1 \\
+299 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=1.0 & 46259746.8 & 6801.45 & 5714.18 & 22.3 & -0.22 & 23.45 & 0.75 & -20.804088 & 1 \\
+300 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.7 & 41922165.65 & 6474.73 & 5438.92 & 21.22 & -0.1 & 22.33 & 1.05 & -20.530021 & 1 \\
+301 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.8 & 41926609.04 & 6475.08 & 5439.23 & 21.22 & -0.1 & 22.33 & 1.08 & -20.000141 & 1 \\
+302 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=1.0 & 41902769.71 & 6473.23 & 5437.75 & 21.22 & -0.1 & 22.32 & 1.14 & -21.074220 & 1 \\
+303 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.7 & 34426459.64 & 5867.41 & 4927.36 & 19.23 & 0.1 & 20.25 & 1.99 & -20.159756 & 1 \\
+304 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.8 & 34433817.66 & 5868.03 & 4927.9 & 19.23 & 0.1 & 20.25 & 1.98 & -19.196271 & 1 \\
+305 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=1.0 & 34409036.04 & 5865.92 & 4926.34 & 19.22 & 0.1 & 20.24 & 2.05 & -20.063315 & 1 \\
+306 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.7 & 19666296.28 & 4434.67 & 3698.43 & 14.47 & 0.48 & 15.46 & 0.42 & 8.451086 & 1 \\
+307 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.8 & 19647481.14 & 4432.55 & 3697 & 14.46 & 0.48 & 15.45 & 0.42 & 6.480059 & 1 \\
+308 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=1.0 & 19681157.54 & 4436.35 & 3698.55 & 14.47 & 0.48 & 15.47 & 0.41 & 10.309046 & 1 \\
+309 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.7 & 7705914.11 & 2775.95 & 2290.37 & 8.98 & 0.8 & 9.8 & 0.61 & 5.042698 & 1 \\
+310 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.8 & 7710686.95 & 2776.81 & 2291.52 & 8.98 & 0.8 & 9.8 & 0.63 & 5.807418 & 1 \\
+311 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=1.0 & 7708988.56 & 2776.51 & 2290.6 & 8.98 & 0.8 & 9.8 & 0.63 & 5.759622 & 1 \\
+312 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.7 & 1420569.29 & 1191.88 & 954.26 & 3.72 & 0.96 & 4.2 & 1.04 & -21.385434 & 0.98 \\
+313 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.8 & 1416307.71 & 1190.09 & 955.18 & 3.72 & 0.96 & 4.18 & 1.05 & -20.998093 & 0.98 \\
+314 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=1.0 & 1418544.45 & 1191.03 & 956.89 & 3.73 & 0.96 & 4.18 & 1.04 & -18.617856 & 0.98 \\
+315 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.7 & 19064801.04 & 4366.33 & 3665.24 & 14.3 & 0.5 & 15.08 & 0.65 & -17.164667 & 1 \\
+316 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.8 & 19058907.42 & 4365.65 & 3664.07 & 14.3 & 0.5 & 15.07 & 1.57 & -16.566855 & 1 \\
+317 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=1.0 & 19033740.19 & 4362.77 & 3662.28 & 14.29 & 0.5 & 15.06 & 0.66 & -17.892872 & 1 \\
+318 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.7 & 7275643.78 & 2697.34 & 2254.95 & 8.8 & 0.81 & 9.35 & 1.02 & -23.590356 & 0.99 \\
+319 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.8 & 7264129 & 2695.2 & 2256.63 & 8.8 & 0.81 & 9.32 & 1.01 & -22.184563 & 0.99 \\
+320 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=1.0 & 7236700.67 & 2690.11 & 2255.55 & 8.8 & 0.81 & 9.28 & 1.03 & -21.098389 & 0.99 \\
+321 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.7 & 1322026.14 & 1149.79 & 924.35 & 3.6 & 0.97 & 4.01 & 1.59 & -33.861982 & 0.97 \\
+322 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.8 & 1306245.04 & 1142.91 & 920.9 & 3.58 & 0.97 & 3.97 & 1.57 & -33.386408 & 0.97 \\
+323 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=1.0 & 1278248.37 & 1130.6 & 916.1 & 3.56 & 0.97 & 3.9 & 1.54 & -33.185714 & 0.97 \\
+324 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.7 & 19064801.04 & 4366.33 & 3665.24 & 14.3 & 0.5 & 15.08 & 0.62 & -17.164667 & 1 \\
+325 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.8 & 19058907.42 & 4365.65 & 3664.07 & 14.3 & 0.5 & 15.07 & 0.63 & -16.566855 & 1 \\
+326 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=1.0 & 19033740.19 & 4362.77 & 3662.28 & 14.29 & 0.5 & 15.06 & 0.67 & -17.892872 & 1 \\
+327 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.7 & 7275643.78 & 2697.34 & 2254.95 & 8.8 & 0.81 & 9.35 & 1 & -23.590356 & 0.99 \\
+328 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.8 & 7264129 & 2695.2 & 2256.63 & 8.8 & 0.81 & 9.32 & 1.02 & -22.184563 & 0.99 \\
+329 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=1.0 & 7236700.67 & 2690.11 & 2255.55 & 8.8 & 0.81 & 9.28 & 1.05 & -21.098389 & 0.99 \\
+330 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.7 & 1322026.14 & 1149.79 & 924.35 & 3.6 & 0.97 & 4.01 & 1.59 & -33.861982 & 0.97 \\
+331 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.8 & 1306245.04 & 1142.91 & 920.9 & 3.58 & 0.97 & 3.97 & 1.63 & -33.386408 & 0.97 \\
+332 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=1.0 & 1278248.37 & 1130.6 & 916.1 & 3.56 & 0.97 & 3.9 & 1.68 & -33.185714 & 0.97 \\
+333 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.7 & 335652.14 & 579.35 & 411.75 & 1.51 & 0.99 & 1.97 & 0.39 & -37.425675 & 0.94 \\
+334 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.8 & 315679.17 & 561.85 & 395.77 & 1.44 & 0.99 & 1.9 & 0.39 & -44.366390 & 0.93 \\
+335 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=1.0 & 305129.8 & 552.39 & 389.2 & 1.41 & 0.99 & 1.87 & 0.36 & -30.170200 & 0.95 \\
+336 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.7 & 329307.44 & 573.85 & 406.35 & 1.49 & 0.99 & 1.95 & 0.47 & -39.147266 & 0.94 \\
+337 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.8 & 312820.68 & 559.3 & 393.02 & 1.43 & 0.99 & 1.89 & 0.46 & -43.543486 & 0.93 \\
+338 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=1.0 & 305134.78 & 552.39 & 389.21 & 1.41 & 0.99 & 1.87 & 0.45 & -30.165519 & 0.95 \\
+339 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.7 & 329460.73 & 573.99 & 406.54 & 1.49 & 0.99 & 1.95 & 0.63 & -39.013616 & 0.94 \\
+340 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.8 & 312681.97 & 559.18 & 392.83 & 1.43 & 0.99 & 1.89 & 0.66 & -43.667619 & 0.93 \\
+341 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=1.0 & 305137.22 & 552.39 & 389.22 & 1.41 & 0.99 & 1.87 & 0.67 & -30.163214 & 0.95 \\
+342 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.7 & 334162.18 & 578.07 & 415.87 & 1.52 & 0.99 & 1.95 & 0.43 & -30.391276 & 0.95 \\
+343 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.8 & 317987.52 & 563.9 & 403.77 & 1.46 & 0.99 & 1.89 & 0.42 & -31.245274 & 0.95 \\
+344 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=1.0 & 308973.25 & 555.85 & 398.91 & 1.43 & 0.99 & 1.82 & 0.42 & -19.325209 & 0.97 \\
+345 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.7 & 327601.17 & 572.36 & 413.97 & 1.51 & 0.99 & 1.91 & 0.5 & -32.688035 & 0.95 \\
+346 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.8 & 317939.08 & 563.86 & 403.71 & 1.46 & 0.99 & 1.89 & 1.5 & -31.288223 & 0.95 \\
+347 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=1.0 & 308979.62 & 555.86 & 398.91 & 1.43 & 0.99 & 1.82 & 0.55 & -19.319544 & 0.97 \\
+348 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.7 & 325082.36 & 570.16 & 411.21 & 1.5 & 0.99 & 1.9 & 0.72 & -31.118747 & 0.95 \\
+349 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.8 & 317745.23 & 563.69 & 403.47 & 1.46 & 0.99 & 1.89 & 0.75 & -31.460312 & 0.95 \\
+350 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=1.0 & 308983.13 & 555.86 & 398.92 & 1.43 & 0.99 & 1.82 & 0.73 & -19.316470 & 0.97 \\
+351 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.7 & 334162.18 & 578.07 & 415.87 & 1.52 & 0.99 & 1.95 & 0.45 & -30.391276 & 0.95 \\
+352 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.8 & 317987.52 & 563.9 & 403.77 & 1.46 & 0.99 & 1.89 & 0.43 & -31.245274 & 0.95 \\
+353 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=1.0 & 308973.25 & 555.85 & 398.91 & 1.43 & 0.99 & 1.82 & 0.45 & -19.325209 & 0.97 \\
+354 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.7 & 327601.17 & 572.36 & 413.97 & 1.51 & 0.99 & 1.91 & 0.57 & -32.688035 & 0.95 \\
+355 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.8 & 317939.08 & 563.86 & 403.71 & 1.46 & 0.99 & 1.89 & 0.55 & -31.288223 & 0.95 \\
+356 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=1.0 & 308979.62 & 555.86 & 398.91 & 1.43 & 0.99 & 1.82 & 0.57 & -19.319544 & 0.97 \\
+357 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.7 & 325082.36 & 570.16 & 411.21 & 1.5 & 0.99 & 1.9 & 0.74 & -31.118747 & 0.95 \\
+358 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.8 & 317745.23 & 563.69 & 403.47 & 1.46 & 0.99 & 1.89 & 0.75 & -31.460312 & 0.95 \\
+359 & XGBoost:\newline gamma=0.5,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=1.0 & 308983.13 & 555.86 & 398.92 & 1.43 & 0.99 & 1.82 & 0.77 & -19.316470 & 0.97 \\
+360 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.7 & 46377423.23 & 6810.1 & 5719.34 & 22.32 & -0.22 & 23.5 & 0.41 & -18.572252 & 1 \\
+361 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.8 & 46377438.74 & 6810.1 & 5719.31 & 22.32 & -0.22 & 23.5 & 0.4 & -18.549472 & 1 \\
+362 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=1.0 & 46376202.29 & 6810.01 & 5719.26 & 22.32 & -0.22 & 23.5 & 0.39 & -18.625938 & 1 \\
+363 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.7 & 42132163.09 & 6490.93 & 5448.27 & 21.27 & -0.11 & 22.42 & 0.6 & -15.856118 & 1 \\
+364 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.8 & 42135314.44 & 6491.17 & 5448.39 & 21.27 & -0.11 & 22.42 & 0.62 & -15.578925 & 1 \\
+365 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=1.0 & 42135198.8 & 6491.16 & 5448.3 & 21.27 & -0.11 & 22.42 & 0.62 & -15.554479 & 1 \\
+366 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.7 & 34822301.79 & 5901.04 & 4946.72 & 19.32 & 0.08 & 20.43 & 1.03 & -8.245035 & 1 \\
+367 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.8 & 34825344.09 & 5901.3 & 4946.8 & 19.32 & 0.08 & 20.43 & 1 & -7.878553 & 1 \\
+368 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=1.0 & 34827754.74 & 5901.5 & 4946.81 & 19.32 & 0.08 & 20.43 & 1.03 & -7.587614 & 1 \\
+369 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.7 & 46269980.1 & 6802.2 & 5714.99 & 22.3 & -0.22 & 23.46 & 0.62 & -20.793185 & 1 \\
+370 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.8 & 46264758.31 & 6801.82 & 5714.46 & 22.3 & -0.22 & 23.46 & 0.62 & -21.046813 & 1 \\
+371 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=1.0 & 46266891 & 6801.98 & 5714.6 & 22.3 & -0.22 & 23.46 & 0.61 & -20.854686 & 1 \\
+372 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.7 & 41923719.07 & 6474.85 & 5439.77 & 21.22 & -0.1 & 22.33 & 1.01 & -21.061268 & 1 \\
+373 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.8 & 41916075.68 & 6474.26 & 5438.89 & 21.22 & -0.1 & 22.33 & 1.02 & -21.332800 & 1 \\
+374 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=1.0 & 41916612.41 & 6474.3 & 5438.52 & 21.22 & -0.1 & 22.33 & 1.03 & -21.111167 & 1 \\
+375 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.7 & 34440386.96 & 5868.59 & 4929.15 & 19.23 & 0.09 & 20.25 & 1.78 & -20.844060 & 1 \\
+376 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.8 & 34429255.01 & 5867.64 & 4928.4 & 19.23 & 0.1 & 20.25 & 1.81 & -21.088303 & 1 \\
+377 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=1.0 & 34422179.76 & 5867.04 & 4927.2 & 19.23 & 0.1 & 20.25 & 2.72 & -21.037104 & 1 \\
+378 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.7 & 46269980.1 & 6802.2 & 5714.99 & 22.3 & -0.22 & 23.46 & 0.63 & -20.793185 & 1 \\
+379 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.8 & 46264758.31 & 6801.82 & 5714.46 & 22.3 & -0.22 & 23.46 & 0.62 & -21.046813 & 1 \\
+380 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=1.0 & 46266891 & 6801.98 & 5714.6 & 22.3 & -0.22 & 23.46 & 0.62 & -20.854686 & 1 \\
+381 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.7 & 41923719.07 & 6474.85 & 5439.77 & 21.22 & -0.1 & 22.33 & 1.01 & -21.061268 & 1 \\
+382 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.8 & 41916075.68 & 6474.26 & 5438.89 & 21.22 & -0.1 & 22.33 & 1.02 & -21.332800 & 1 \\
+383 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=1.0 & 41916612.41 & 6474.3 & 5438.52 & 21.22 & -0.1 & 22.33 & 1.02 & -21.111167 & 1 \\
+384 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.7 & 34440386.96 & 5868.59 & 4929.15 & 19.23 & 0.09 & 20.25 & 1.78 & -20.844060 & 1 \\
+385 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.8 & 34429255.01 & 5867.64 & 4928.4 & 19.23 & 0.1 & 20.25 & 1.82 & -21.088303 & 1 \\
+386 & XGBoost:\newline gamma=1,\newline learning\_rate=0.001,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=1.0 & 34422179.76 & 5867.04 & 4927.2 & 19.23 & 0.1 & 20.25 & 1.83 & -21.037104 & 1 \\
+387 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.7 & 19666296.28 & 4434.67 & 3698.43 & 14.47 & 0.48 & 15.46 & 0.41 & 8.451086 & 1 \\
+388 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.8 & 19647481.14 & 4432.55 & 3697 & 14.46 & 0.48 & 15.45 & 0.39 & 6.480059 & 1 \\
+389 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=1.0 & 19681157.54 & 4436.35 & 3698.55 & 14.47 & 0.48 & 15.47 & 0.4 & 10.309046 & 1 \\
+390 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.7 & 7705914.11 & 2775.95 & 2290.37 & 8.98 & 0.8 & 9.8 & 0.61 & 5.042698 & 1 \\
+391 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.8 & 7710686.95 & 2776.81 & 2291.52 & 8.98 & 0.8 & 9.8 & 0.61 & 5.807418 & 1 \\
+392 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=1.0 & 7708988.56 & 2776.51 & 2290.6 & 8.98 & 0.8 & 9.8 & 0.62 & 5.759622 & 1 \\
+393 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.7 & 1501368.39 & 1225.3 & 969.16 & 3.79 & 0.96 & 4.42 & 1.01 & -18.830883 & 0.98 \\
+394 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.8 & 1470544.99 & 1212.66 & 964.25 & 3.76 & 0.96 & 4.34 & 1.01 & -24.836076 & 0.98 \\
+395 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=1.0 & 1442083.53 & 1200.87 & 956.27 & 3.73 & 0.96 & 4.28 & 1.02 & -26.018782 & 0.98 \\
+396 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.7 & 19134864.96 & 4374.34 & 3667.73 & 14.31 & 0.5 & 15.13 & 0.56 & -17.693049 & 1 \\
+397 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.8 & 19100721.82 & 4370.44 & 3665.18 & 14.31 & 0.5 & 15.12 & 0.6 & -19.164637 & 1 \\
+398 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=1.0 & 19075841.93 & 4367.59 & 3662.45 & 14.3 & 0.5 & 15.1 & 0.6 & -18.810314 & 1 \\
+399 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.7 & 7376792.54 & 2716.03 & 2262.21 & 8.83 & 0.81 & 9.47 & 0.89 & -22.911903 & 0.99 \\
+400 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.8 & 7364929.56 & 2713.84 & 2262.01 & 8.83 & 0.81 & 9.45 & 0.91 & -22.188066 & 0.99 \\
+401 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=1.0 & 7327140.78 & 2706.87 & 2258.26 & 8.81 & 0.81 & 9.41 & 0.92 & -23.810163 & 0.99 \\
+402 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.7 & 1466449.83 & 1210.97 & 960.45 & 3.75 & 0.96 & 4.35 & 1.39 & -24.868947 & 0.98 \\
+403 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.8 & 1434508.99 & 1197.71 & 953.86 & 3.71 & 0.96 & 4.28 & 1.41 & -29.698369 & 0.98 \\
+404 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=1.0 & 1396281.21 & 1181.64 & 944.24 & 3.67 & 0.96 & 4.19 & 2.36 & -32.025608 & 0.97 \\
+405 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.7 & 19134864.96 & 4374.34 & 3667.73 & 14.31 & 0.5 & 15.13 & 0.58 & -17.693049 & 1 \\
+406 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.8 & 19100721.82 & 4370.44 & 3665.18 & 14.31 & 0.5 & 15.12 & 0.6 & -19.164637 & 1 \\
+407 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=1.0 & 19075841.93 & 4367.59 & 3662.45 & 14.3 & 0.5 & 15.1 & 0.6 & -18.810314 & 1 \\
+408 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.7 & 7376792.54 & 2716.03 & 2262.21 & 8.83 & 0.81 & 9.47 & 0.89 & -22.911903 & 0.99 \\
+409 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.8 & 7364929.56 & 2713.84 & 2262.01 & 8.83 & 0.81 & 9.45 & 0.9 & -22.188066 & 0.99 \\
+410 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=1.0 & 7327140.78 & 2706.87 & 2258.26 & 8.81 & 0.81 & 9.41 & 0.94 & -23.810163 & 0.99 \\
+411 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.7 & 1466449.83 & 1210.97 & 960.45 & 3.75 & 0.96 & 4.35 & 1.4 & -24.868947 & 0.98 \\
+412 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.8 & 1434508.99 & 1197.71 & 953.86 & 3.71 & 0.96 & 4.28 & 1.42 & -29.698369 & 0.98 \\
+413 & XGBoost:\newline gamma=1,\newline learning\_rate=0.01,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=1.0 & 1396281.21 & 1181.64 & 944.24 & 3.67 & 0.96 & 4.19 & 1.47 & -32.025608 & 0.97 \\
+414 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.7 & 429225.97 & 655.15 & 461.84 & 1.75 & 0.99 & 2.37 & 0.38 & -38.065057 & 0.95 \\
+415 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=0.8 & 400752.14 & 633.05 & 445.33 & 1.67 & 0.99 & 2.26 & 0.4 & -40.126254 & 0.94 \\
+416 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=50,\newline subsample=1.0 & 381728.43 & 617.84 & 438.78 & 1.64 & 0.99 & 2.18 & 0.39 & -32.908594 & 0.95 \\
+417 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.7 & 428802.79 & 654.83 & 461.42 & 1.75 & 0.99 & 2.37 & 0.49 & -38.388234 & 0.94 \\
+418 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=0.8 & 400665.34 & 632.98 & 445.24 & 1.67 & 0.99 & 2.26 & 0.44 & -40.194807 & 0.94 \\
+419 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=100,\newline subsample=1.0 & 381733.37 & 617.85 & 438.79 & 1.64 & 0.99 & 2.18 & 0.49 & -32.904624 & 0.95 \\
+420 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.7 & 428092.45 & 654.29 & 460.7 & 1.75 & 0.99 & 2.37 & 0.62 & -32.646724 & 0.95 \\
+421 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=0.8 & 399364.65 & 631.95 & 443.84 & 1.67 & 0.99 & 2.26 & 0.65 & -35.352635 & 0.95 \\
+422 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=3,\newline n\_estimators=200,\newline subsample=1.0 & 381735.77 & 617.85 & 438.79 & 1.64 & 0.99 & 2.18 & 0.65 & -32.902545 & 0.95 \\
+423 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.7 & 408550.62 & 639.18 & 445.51 & 1.69 & 0.99 & 2.31 & 0.42 & -47.392631 & 0.93 \\
+424 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=0.8 & 404672.21 & 636.14 & 447.49 & 1.68 & 0.99 & 2.28 & 0.39 & -36.399037 & 0.95 \\
+425 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=50,\newline subsample=1.0 & 381499.18 & 617.66 & 440.38 & 1.63 & 0.99 & 2.15 & 0.41 & -32.377064 & 0.95 \\
+426 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.7 & 408069.6 & 638.8 & 444.99 & 1.68 & 0.99 & 2.31 & 0.48 & -47.769072 & 0.93 \\
+427 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=0.8 & 404652.21 & 636.12 & 447.47 & 1.68 & 0.99 & 2.28 & 0.5 & -36.414736 & 0.95 \\
+428 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=100,\newline subsample=1.0 & 381505.04 & 617.66 & 440.39 & 1.63 & 0.99 & 2.15 & 0.49 & -32.372436 & 0.95 \\
+429 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.7 & 408346.19 & 639.02 & 445.29 & 1.69 & 0.99 & 2.31 & 0.67 & -47.552450 & 0.93 \\
+430 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=0.8 & 404402.78 & 635.93 & 447.2 & 1.68 & 0.99 & 2.28 & 0.7 & -36.610916 & 0.95 \\
+431 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=5,\newline n\_estimators=200,\newline subsample=1.0 & 381507.88 & 617.66 & 440.4 & 1.63 & 0.99 & 2.15 & 0.7 & -32.370187 & 0.95 \\
+432 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.7 & 408550.62 & 639.18 & 445.51 & 1.69 & 0.99 & 2.31 & 0.41 & -47.392631 & 0.93 \\
+433 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=0.8 & 404672.21 & 636.14 & 447.49 & 1.68 & 0.99 & 2.28 & 0.39 & -36.399037 & 0.95 \\
+434 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=50,\newline subsample=1.0 & 381499.18 & 617.66 & 440.38 & 1.63 & 0.99 & 2.15 & 0.4 & -32.377064 & 0.95 \\
+435 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.7 & 408069.6 & 638.8 & 444.99 & 1.68 & 0.99 & 2.31 & 0.49 & -47.769072 & 0.93 \\
+436 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=0.8 & 404652.21 & 636.12 & 447.47 & 1.68 & 0.99 & 2.28 & 0.49 & -36.414736 & 0.95 \\
+437 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=100,\newline subsample=1.0 & 381505.04 & 617.66 & 440.39 & 1.63 & 0.99 & 2.15 & 0.51 & -32.372436 & 0.95 \\
+438 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.7 & 408346.19 & 639.02 & 445.29 & 1.69 & 0.99 & 2.31 & 0.67 & -47.552450 & 0.93 \\
+439 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=0.8 & 404402.78 & 635.93 & 447.2 & 1.68 & 0.99 & 2.28 & 0.7 & -36.610916 & 0.95 \\
+440 & XGBoost:\newline gamma=1,\newline learning\_rate=0.1,\newline max\_depth=7,\newline n\_estimators=200,\newline subsample=1.0 & 381507.88 & 617.66 & 440.4 & 1.63 & 0.99 & 2.15 & 0.7 & -32.370187 & 0.95 \\
+441 & SVR:\newline C=0.1,\newline epsilon=0.01,\newline kernel=linear & 148216.7 & 384.99 & 258.51 & 0.9 & 1 & 1.28 & 921.78 & -56.072572 & 0.87 \\
+442 & SVR:\newline C=0.1,\newline epsilon=0.01,\newline kernel=rbf & 1989897.62 & 1410.64 & 1050.52 & 4.03 & 0.95 & 5.21 & 507.47 & 756.028301 & 2.15 \\
+443 & SVR:\newline C=0.1,\newline epsilon=0.1,\newline kernel=linear & 3512111.56 & 1874.06 & 1581.55 & 5.76 & 0.91 & 4.8 & 1.66 & 452.917492 & 1.32 \\
+444 & SVR:\newline C=0.1,\newline epsilon=0.1,\newline kernel=rbf & 6557051.84 & 2560.67 & 2081.01 & 7.97 & 0.83 & 8.17 & 6.28 & 582.779524 & 1.29 \\
+445 & SVR:\newline C=0.1,\newline epsilon=0.2,\newline kernel=linear & 11347187.97 & 3368.56 & 2769.17 & 10.61 & 0.7 & 10.78 & 0.69 & 401.987520 & 1.14 \\
+446 & SVR:\newline C=0.1,\newline epsilon=0.2,\newline kernel=rbf & 25705097.93 & 5070.02 & 4217.66 & 16.57 & 0.32 & 14.87 & 1.28 & 1158.003311 & 1.3 \\
+447 & SVR:\newline C=1.0,\newline epsilon=0.01,\newline kernel=linear & 143044.31 & 378.21 & 254.57 & 0.89 & 1 & 1.27 & 9932.86 & -60.848095 & 0.86 \\
+448 & SVR:\newline C=1.0,\newline epsilon=0.01,\newline kernel=rbf & 1688480.05 & 1299.42 & 1013.09 & 3.93 & 0.96 & 4.36 & 1309.78 & 906.864992 & 3.31 \\
+449 & SVR:\newline C=1.0,\newline epsilon=0.1,\newline kernel=linear & 2946243.96 & 1716.46 & 1442.69 & 5.14 & 0.92 & 4.13 & 2.67 & 504.870654 & 1.42 \\
+450 & SVR:\newline C=1.0,\newline epsilon=0.1,\newline kernel=rbf & 6914955.99 & 2629.63 & 2167.62 & 8.26 & 0.82 & 7.98 & 3.86 & 786.395894 & 1.43 \\
+451 & SVR:\newline C=1.0,\newline epsilon=0.2,\newline kernel=linear & 5834281.08 & 2415.43 & 1983.37 & 7.23 & 0.85 & 8.31 & 0.87 & -224.681832 & 0.91 \\
+452 & SVR:\newline C=1.0,\newline epsilon=0.2,\newline kernel=rbf & 24779642.85 & 4977.92 & 4095.46 & 16.1 & 0.35 & 14.88 & 1.09 & 1112.513789 & 1.29 \\
+\end{longtable}
+\endgroup
+
+

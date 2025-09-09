@@ -1,3 +1,6 @@
+# Script para obtener datos de la API de Kunna de la Universidad de Alicante
+# y almacenarlos en un archivo CSV
+
 import requests
 import pandas as pd
 from datetime import datetime, timedelta
