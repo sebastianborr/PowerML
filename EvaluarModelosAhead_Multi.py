@@ -25,8 +25,8 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 # ---------- CONFIGURACIÓN ---------- (Valores fijos    )
 SEQ_LENGTH  = 48          # 8 h de pasado
-num_ahead = [1,6,12,24,48]  # número de pasos adelante que quieres predecir
-# num_ahead =[1,48] 
+# num_ahead = [1,6,12,24,48]  # número de pasos adelante que quieres predecir
+num_ahead =[6] 
 
 MODELS_DIR  = 'models'    # ahí están los .h5     (p.e. LSTM_89_1.h5)
 SCALER_DIR  = 'models'    # ahí están los scaler_X.pkl y scaler_y.pkl

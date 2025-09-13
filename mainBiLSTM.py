@@ -49,6 +49,7 @@ NUM_FEATURES = X_exog.shape[1]-2  # Número de características de entrada
 def feature_attention(inputs):
     attention = Dense(inputs.shape[-1], activation='sigmoid')(inputs)  # Eq. 6 del paper
     attention = Dense(inputs.shape[-1], activation='softmax')(attention)  # Eq. 7
+    # Multiplicar los pesos de atención por la salida de la Bi-LSTM 
     return Multiply()([inputs, attention])  # Eq. 8: X'_a = α ⊙ X'
 
 # Mecanismo de atención temporal (Temporal Attention)
